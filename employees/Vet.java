@@ -47,7 +47,8 @@ public class Vet implements Employee {
         this.role = role;
     }
 
-    // raises the staff's weekly salary by 20%
+    // raises the vet's weekly salary by 20% 
+    //(higher increase rate than staff due to the nature of their job)
     public double givePayRaise() {
         double increasedPay = getWeeklySalary() * 0.2;
         setWeeklySalary(increasedPay);
