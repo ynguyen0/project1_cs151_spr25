@@ -12,12 +12,6 @@ public class ShelterManagement {
   private static HashMap<Integer, String> petRoom;
   private HashMap<Appointment, String> playDates;
 
-  // class constructor 
-  // public ShelterManagement(int c, int dB) {
-  //   capacity = c;
-  //   donationBin = dB;
-  // }
-
   // set or get capacity of shelter
   public static void setCapacity(int c) {
     capacity = c;
@@ -37,11 +31,7 @@ public class ShelterManagement {
     return employees;
   }
 
-  // public void addGuest(Guest g) {
-  //   guests.add(g);
-  // }
-
-  // methdos for updating/adding a pet in a room, or removing a pet from a room
+  // methods for updating/adding a pet in a room, or removing a pet from a room
   public static void addPetRoom() {
     petRoom.put(roomNumber, p);
   }
@@ -72,7 +62,7 @@ public class ShelterManagement {
       switch(input.toLowerCase()) 
       {
         case "y":
-          System.out.println("Which pet would you like to move?");
+          System.out.println("Which room would you like to move into?");
           addPetRoom();
           break;
         case "n":
