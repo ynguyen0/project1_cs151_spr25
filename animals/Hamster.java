@@ -18,6 +18,11 @@ public class Hamster extends Pet {
         this.age = age;
     }
 
+    public Hamster(String name){
+        cheek = new LinkedList<>();
+        this.name = name;
+    }
+
     //Setters
     public void setAdoptionStatus(Boolean isAdopted){
         this.isAdopted = isAdopted;
@@ -79,8 +84,8 @@ public class Hamster extends Pet {
         System.out.println("Age: " + age);
     }
 
-        public void updatePetProfile(){
-         Scanner s = new Scanner(System.in);
+        public void updatePetProfile(Scanner s){
+         //Scanner s = new Scanner(System.in);
          System.out.println("Please select one of the following to update the pet's profile. \n 1. Name \n 2. Species \n 3. Ownership of Pets");
 
         while(s.hasNextInt()){

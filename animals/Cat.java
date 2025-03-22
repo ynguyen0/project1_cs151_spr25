@@ -1,6 +1,7 @@
 package animals;
 
 import java.util.Scanner;
+import java.util.LinkedList;
 import java.util.Random;
 
 public class Cat extends Pet {
@@ -23,6 +24,9 @@ public class Cat extends Pet {
         this.age = age;
         this.clean = clean;
         this.breed = breed;
+    }
+    public Cat(String name){
+        this.name = name;
     }
 
     //Setters
@@ -107,8 +111,8 @@ public class Cat extends Pet {
         return breed;
     }
 
-    public void updatePetProfile(){
-         Scanner s = new Scanner(System.in);
+    public void updatePetProfile(Scanner s){
+         //Scanner s = new Scanner(System.in);
          System.out.println("Please select one of the following to update the pet's profile. \n 1. Name \n 2. Species \n 3. Ownership of Pets");
 
         while(s.hasNextInt()){
