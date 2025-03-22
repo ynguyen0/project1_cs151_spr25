@@ -43,6 +43,7 @@ public class Cat extends Pet {
             System.out.println("Remember, " + name + "is not yet litterbox trained. Please take extra care to train them. Take care!");
         }
         isAdopted = true;
+        canAdopt = false;
     }
     
     public void play(String toy){

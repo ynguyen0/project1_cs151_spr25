@@ -23,7 +23,10 @@ public class Hamster extends Pet {
     }
 
 
-    public void addNewPet(){}
+    public void addNewPet(){
+        
+    }
+
     public void updatePetProfile(){}
 
     public String getPetProfile(){ 
@@ -33,7 +36,12 @@ public class Hamster extends Pet {
 
     public void setAdoptionStatus(){}
 
-    public void adopt(String guestname){}
+    public void adopt(String guestname){
+        System.out.println("Dear " + guestname + ", Thank you for adopting" + name + "!");
+        System.out.println("Please take good care of them!");
+        isAdopted = true;
+        canAdopt = false;
+    }
     
     public void play(String guestName){}
 
