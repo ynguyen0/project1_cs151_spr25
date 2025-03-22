@@ -63,6 +63,10 @@ public class Staff implements Employee {
         this.hoursWorked = hoursWorked;
     }
 
+    @Override
+    public String toString() {
+        return "Vet{name='" + employeeName + "', ID=" + employeeID + ", Role='" + role + "', Weekly Salary=" + weeklySalary + "}";
+    }
 
     // allows the staff to check their weekly salary after receiving bonuses
     @SuppressWarnings("resource")

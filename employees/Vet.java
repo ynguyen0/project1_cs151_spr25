@@ -1,5 +1,10 @@
 package employees;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.HashMap;
+import animals.Pet;
 
 public class Vet implements Employee {
     private String employeeName;
@@ -7,13 +12,15 @@ public class Vet implements Employee {
     private double weeklySalary;
     private String role;
     private double hoursWorked;
+     private Map<Pet, List<String>> prescriptions;
 
     public Vet (String employeeName, int employeeID, double weeklySalary, String role, double hoursWorked) {
-        this.employeeName = employeeName;
-        this.employeeID = employeeID;
-        this.weeklySalary = weeklySalary;
-        this.role = role;
-        this.hoursWorked = hoursWorked;
+            this.employeeName = employeeName;
+            this.employeeID = employeeID;
+            this.weeklySalary = weeklySalary;
+            this.role = role;
+            this.hoursWorked = hoursWorked;
+            prescriptions = new HashMap<>();
     }
 
     public String getEmployeeName() {
@@ -62,6 +69,11 @@ public class Vet implements Employee {
         this.hoursWorked = hoursWorked;
     }
 
+    @Override
+    public String toString() {
+        return "Vet{name='" + employeeName + "', ID=" + employeeID + ", Role='" + role + "', Weekly Salary=" + weeklySalary + "}";
+    }
+
     // reminds the employee of their tasks based on their role
     public void checkTasks() {
         if (role.equals("Vet")) {
@@ -93,8 +105,26 @@ public class Vet implements Employee {
         } else {
             System.out.println("Could not process your input. Please select: Critical/Normal/Healthy");
         }
-
-        s.close();
     }
 
+    public void addPrescription(Pet pet, String prescription) {
+        prescriptions.putIfAbsent(pet, new ArrayList<>());
+        prescriptions.get(pet).add(prescription);
+
+        System.out.println(prescription + " has been added to " + pet.getName() + "'s medication list.");
+    }
+
+    public void listPrescription(Pet pet) {
+        List<String> medicationList = prescriptions.get(pet);
+
+        if (medicationList.isEmpty()) {
+            System.out.println(pet.getName() + " is not prescribed any medication. Looks like your pet is healthy!");
+        } 
+        else {
+            System.out.println("Here is a list of all medications for " + pet.getName() + ":");
+            for (String m : medicationList) {
+                System.out.println(m);
+            }
+        }
+    }
 }
