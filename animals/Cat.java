@@ -1,6 +1,7 @@
 package animals;
 
 import java.util.Scanner;
+import java.util.Random;
 
 public class Cat extends Pet {
 
@@ -105,11 +106,6 @@ public class Cat extends Pet {
     public String getBreed(){
         return breed;
     }
-
-
-
-    // public void addNewPet(){  
-    // }
 
     public void updatePetProfile(){
          Scanner s = new Scanner(System.in);
@@ -262,30 +258,58 @@ public class Cat extends Pet {
             isAdopted = true;
             canAdopt = false;
         }
+        else{
+            System.out.println(name + "is not yet adoptable. Please come back another time.");
+        } 
        
     }
+
+    public void setAppointment(String guestName, int time){
+
+    }
+    public void cancelAppointment(String guestName){}
+    public void checkMeetingTime(){}
+
     
-    public void logPlayDate(String toy){
+    public void checkActivity(){
 
-        System.out.printf("What did %s do during today's playdate? \n 1. catch a mouse. \n 2. eat \n 3. meow \n 4. play with a toy", name);
+        Random randomNumGen = new Random();
+        int num = randomNumGen.nextInt(5);
 
+        if (num == 1){
+            catchMouse();
+        }
+        else if (num == 2){
+            eat();
+        }
+        else if (num == 3){
+            scratch();
+        }
+        else if (num == 4){
+            meow();
+        }
+        else if (num == 5){
+            nap();
+        }
+        else if (num == 0){
+            play();
+        }
+    }
 
+    public void play(){
         if(temperment == "lazy"){
-            System.out.println(name + "looked at you and went back to sleep. zzzz");
+            System.out.println(name + "looked at me and went back to sleep. zzzz");
         }
         else if (temperment == "playful"){
-            System.out.println(name + "started playing with the " + toy + ". They seem to be having fun.");
+            System.out.println(name + "started chasing a laser. They seem to be having fun.");
         }
         else if (temperment == "feisty"){
             scratch();
         }
+        else{
+            System.out.print(name + "is playing with a ball of yarn.");
+        }
     }
-
-    public void setAppointment(String guestName, int time){}
-    public void cancelAppointment(String guestName){}
-    public void checkMeetingTime(){}
-
-
 
     public void eat(){
         System.out.println(name + " ate and is now full.");
@@ -297,18 +321,12 @@ public class Cat extends Pet {
     }
 
     public void scratch(){
-        if(temperment == "fiesty"){
-            System.out.println("Watch out!" + name + " doesn't like to be pet.");
-        }
-        else{
-            System.out.println(name + " started playing at the scratching post.");
-        }
-
+        System.out.println(name + " started playing at the scratching post.");
     }
 
     public void catchMouse(){
         if(temperment == "lazy"){
-            System.out.println("A mouse passed by and " + name + " looked at it and went back to sleep. zzzz");
+            System.out.println("A mouse passed by. " + name + " looked at it and went back to sleep. zzzz");
         }
         else if (temperment == "playful"){
             System.out.println(name + " just spotted a mouse and dashed off!");
@@ -320,17 +338,17 @@ public class Cat extends Pet {
 
     public void meow(){
         if(temperment == "lazy"){
-            System.out.println("Purr");
+            System.out.println(name + "just purred");
         }
         else if (temperment == "playful"){
-            System.out.println("Meow!");
+            System.out.println(name + "just meowed!");
         }
         else if (temperment == "feisty"){
-            System.out.println("Hiss!");
+            System.out.println(name + "just hissed!");
         }
     }
 
     public void nap(){
-        System.out.println(name + " took a nap!");
+        System.out.println(name + " is taking a nap!");
     }
 }

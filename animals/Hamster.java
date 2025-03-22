@@ -1,5 +1,7 @@
 package animals;
 import java.util.Queue;
+import java.util.Random;
+import java.util.Scanner;
 import java.util.LinkedList;
 
 public class Hamster extends Pet {
@@ -67,14 +69,6 @@ public class Hamster extends Pet {
     }
 
 
-
-
-
-
-    public void addNewPet(){
-        
-    }
-
     public void getPetProfile(){ 
         System.out.println("Name: " + name);
         System.out.println("Species: " + species);
@@ -85,28 +79,148 @@ public class Hamster extends Pet {
         System.out.println("Age: " + age);
     }
 
-    public void adopt(String guestname){
-        System.out.println("Dear " + guestname + ", Thank you for adopting" + name + "!");
-        System.out.println("Please take good care of them!");
-        isAdopted = true;
-        canAdopt = false;
+        public void updatePetProfile(){
+         Scanner s = new Scanner(System.in);
+         System.out.println("Please select one of the following to update the pet's profile. \n 1. Name \n 2. Species \n 3. Ownership of Pets");
+
+        while(s.hasNextInt()){
+            if (s.nextInt() == 1){
+                System.out.println("Enter new name: ");
+                String newName = s.nextLine();
+                System.out.printf("%s's name has been changed to %s.", name, newName);
+                setName(newName);
+            }
+            else if (s.nextInt() == 2){
+                System.out.println("Enter updated species: ");
+                String newSpecies = s.nextLine();
+                System.out.printf("%s's species has been changed to %s.", name, newSpecies);
+                setSpecies(newSpecies);
+            }
+            else if (s.nextInt() == 3){
+                System.out.println("Enter updated room number: ");
+                // follow room number logic with the shelter
+                int newRoomNumber = s.nextInt();
+               ///// System.out.printf("%s's species has been changed to %s.", name, newSpecies);
+                roomNumber = newRoomNumber;
+            }
+            else if (s.nextInt() == 4){
+                System.out.println("Enter updated health status: \n 1. healthy \n 2. unhealthy");
+                int newHealthInt = s.nextInt();
+                if(newHealthInt == 1){
+                    setHealth(true);
+                    System.out.printf("%s's health condition has been updated to healthy.", name);
+                }
+                else{
+                    setHealth(false);
+                    System.out.printf("%s's health condition has been updated to unhealthy.", name);
+
+                }
+            }
+            else if (s.nextInt() == 5){
+                System.out.println("Enter updated adoption status: \n 1. Is adopted \n Is not adopted/n");
+                int newAdoptInt = s.nextInt();
+                if(newAdoptInt == 1){
+                    setAdoptionStatus(true);
+                    System.out.printf("%s's adoption status has been updated to adopted.", name);
+                }
+                else{
+                    setAdoptionStatus(false);
+                    System.out.printf("%s's health condition has been updated to not adopted.", name);
+
+                }
+            }
+            else if (s.nextInt() == 6){
+                // follow adoptability logic 
+                System.out.println("Enter adobtability condition: \n 1. Is adoptable \n 2. Is not adoptable");
+                int newAdoptInt = s.nextInt();
+                if(newAdoptInt == 1){
+                    if (isHealthy && !isAdopted){
+                        setAdoptionStatus(true);
+                        System.out.printf("%s's adoption status has been updated to adoptable.", name);
+                    }
+                    else{
+                        System.out.printf("%s is not yet adoptable. Please try again.", name);
+                    }
+                }
+                else{
+                    setAdoptionStatus(false);
+                    System.out.printf("%s is not yet adoptable.", name);
+                }
+            }
+            else if (s.nextInt() == 7){
+                System.out.println("Enter updated age: ");
+                int newAge = s.nextInt();
+                System.out.printf("%s's age has been updated to %d.", name, newAge);
+                setAge(newAge);
+            }
+            else if (s.next() == "Exit"){
+                System.out.print("Updates complete.");
+                break;
+            }
+            else{
+                System.out.println("Invalid response.");
+                break;
+            }
+        }
+
     }
-    
-    public void play(String guestName){}
+
+    public void adopt(String guestname){
+        if (canAdopt){
+            System.out.println("Dear " + guestname + ", Thank you for adopting" + name + "!");
+            System.out.println("Please take good care of them!");
+            isAdopted = true;
+            canAdopt = false;
+        }
+        else{
+            System.out.println(name + "is not yet adoptable. Please come back another time.");
+        }       
+    }
 
 
     public void setAppointment(String guestName, int time){}
     public void cancelAppointment(String guestName){}
     public void checkMeetingTime(){}
 
+    public void checkActivity(){
 
-    public void eat(){}
+        Random randomNumGen = new Random();
+        int num = randomNumGen.nextInt(5);
 
-    public void vetTrip(Vet vet){}
+        if (num == 1){
+            runInMaze();
+        }
+        else if (num == 2){
+            eat();
+        }
+        else if (num == 3){
+            useWheel();
+        }
+        else if (num == 4){
+            nap();
+        }
+        else if (num == 5){
+            int snackNum = randomNumGen.nextInt(3);
+            String snack;
+            if (snackNum == 0){
+                snack = "sunflower seed";
+            }
+            else if (snackNum == 1){
+                snack = "millet";
+            }
+            else if (snackNum == 2){
+                snack = "pumpkin seed";
+            }
+            storeFood(snack);
+        }
+        else if (num == 0){
+            digtunnel();
+        }
+    }
 
-
-
-
+    public void eat(){
+        System.out.println(name + " ate a sunflower seed.");
+    }
 
     public void runInMaze(){
         System.out.println(name + "is now running in the maze!");

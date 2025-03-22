@@ -90,7 +90,7 @@ public class Vet implements Employee {
         }
     }
 
-    public void logVitals() {
+    public void logVitals(Pet pet) {
         Scanner s = new Scanner(System.in);
 
         System.out.println("How were the pet's vitals? (Please select: Critical/Normal/Healthy)");
@@ -98,10 +98,12 @@ public class Vet implements Employee {
 
         if (vitals.equals("Critical")) {
             System.out.println("The pet's vitals have been logged as critical. Please transfer to the hospital.");
+            pet.isHealthy = false;
         } else if (vitals.equals("Normal")) {
             System.out.println("The pet's vitals have been logged as normal. Please continue to monitor.");
         } else if (vitals.equals("Healthy")) {
             System.out.println("The pet's vitals are healthy. Please give the pet a treat!");
+            pet.isHealthy = true;
         } else {
             System.out.println("Could not process your input. Please select: Critical/Normal/Healthy");
         }
@@ -114,17 +116,32 @@ public class Vet implements Employee {
         System.out.println(prescription + " has been added to " + pet.getName() + "'s medication list.");
     }
 
+    public void removePrescription(Pet pet, String prescription) {
+        
+
+        if (prescriptions!= null && prescriptions.get(pet).contains(prescription)){
+            prescriptions.get(pet).remove(prescription);
+
+            System.out.println(prescription + " has been removed from " + pet.getName() + "'s medication list.");
+        }
+        else{
+            System.out.println("Prescription not found");
+        }
+    }
+
     public void listPrescription(Pet pet) {
         List<String> medicationList = prescriptions.get(pet);
 
         if (medicationList.isEmpty()) {
             System.out.println(pet.getName() + " is not prescribed any medication. Looks like your pet is healthy!");
+            pet.isHealthy = true;
         } 
         else {
             System.out.println("Here is a list of all medications for " + pet.getName() + ":");
             for (String m : medicationList) {
                 System.out.println(m);
             }
+            pet.isHealthy = false;
         }
     }
 }
