@@ -4,13 +4,6 @@ import java.util.LinkedList;
 
 public class Hamster extends Pet {
 
-    // public String name;
-    // public String species;
-    // //public String temperment;
-    // public int roomNumber;
-    // public boolean isHealthy;
-    // public boolean isAdopted;
-
     private Queue<String> cheek;
 
     public Hamster(String name, String species, int roomNumber, boolean isHealthy, boolean isAdopted, int age){
@@ -23,19 +16,74 @@ public class Hamster extends Pet {
         this.age = age;
     }
 
+    //Setters
+    public void setAdoptionStatus(Boolean isAdopted){
+        this.isAdopted = isAdopted;
+    }
+
+    public void setHealth(Boolean isHealthy){
+        this.isHealthy = isHealthy;
+    }
+
+    public void setRoomNumber(int roomNumber){
+        this.roomNumber = roomNumber;
+    }
+
+    public void setSpecies(String species){
+        this.species = species;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public void setAge(int age){
+        this.age = age;
+    }
+
+    //Getters 
+    public Boolean getAdoptionStatus(){
+        return isAdopted;
+    }
+
+    public Boolean getHealth(){
+        return isHealthy;
+    }
+
+    public int getRoomNumber(){
+        return roomNumber;
+    }
+
+    public String getSpecies(){
+        return species;
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public int getAge(){
+        return age;
+    }
+
+
+
+
+
 
     public void addNewPet(){
         
     }
 
-    public void updatePetProfile(){}
-
-    public String getPetProfile(){ 
-        String profile = "Name: " + name + "  Species: " + species + "  Room: " + roomNumber;
-        return profile;
+    public void getPetProfile(){ 
+        System.out.println("Name: " + name);
+        System.out.println("Species: " + species);
+        System.out.println("Room Number: " + roomNumber);
+        System.out.println("Healthy?: " + isHealthy);
+        System.out.println("Adopted?: " + isAdopted);
+        System.out.println("Ready to Adopt?: " + canAdopt);
+        System.out.println("Age: " + age);
     }
-
-    public void setAdoptionStatus(){}
 
     public void adopt(String guestname){
         System.out.println("Dear " + guestname + ", Thank you for adopting" + name + "!");
@@ -50,7 +98,10 @@ public class Hamster extends Pet {
     public void setAppointment(String guestName, int time){}
     public void cancelAppointment(String guestName){}
     public void checkMeetingTime(){}
+
+
     public void eat(){}
+
     public void vetTrip(Vet vet){}
 
 
