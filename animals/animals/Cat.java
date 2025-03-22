@@ -1,7 +1,6 @@
 package animals;
 
 import java.util.Scanner;
-import java.util.LinkedList;
 import java.util.Random;
 
 public class Cat extends Pet {
@@ -267,13 +266,6 @@ public class Cat extends Pet {
         } 
        
     }
-
-    public void setAppointment(String guestName, int time){
-
-    }
-    public void cancelAppointment(String guestName){}
-    public void checkMeetingTime(){}
-
     
     public void checkActivity(){
 

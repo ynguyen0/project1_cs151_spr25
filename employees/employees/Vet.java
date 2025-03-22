@@ -90,8 +90,7 @@ public class Vet implements Employee {
         }
     }
 
-    public void logVitals(Pet pet) {
-        Scanner s = new Scanner(System.in);
+    public void logVitals(Pet pet, Scanner s) {
 
         System.out.println("How were the pet's vitals? (Please select: Critical/Normal/Healthy)");
         String vitals = s.nextLine();
@@ -128,6 +127,7 @@ public class Vet implements Employee {
             System.out.println("Prescription not found");
         }
     }
+
 
     public void listPrescription(Pet pet) {
         List<String> medicationList = prescriptions.get(pet);

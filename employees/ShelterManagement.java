@@ -1,4 +1,4 @@
 package employees;
-public class ShelterManagement {
+public class Console {
     
 }

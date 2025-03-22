@@ -83,7 +83,7 @@ public class Hamster extends Pet {
         System.out.println("Ready to Adopt?: " + canAdopt);
         System.out.println("Age: " + age);
     }
-
+    
         public void updatePetProfile(Scanner s){
          //Scanner s = new Scanner(System.in);
          System.out.println("Please select one of the following to update the pet's profile. \n 1. Name \n 2. Species \n 3. Ownership of Pets");
@@ -182,11 +182,6 @@ public class Hamster extends Pet {
         }       
     }
 
-
-    public void setAppointment(String guestName, int time){}
-    public void cancelAppointment(String guestName){}
-    public void checkMeetingTime(){}
-
     public void checkActivity(){
 
         Random randomNumGen = new Random();
@@ -209,14 +204,16 @@ public class Hamster extends Pet {
             String snack;
             if (snackNum == 0){
                 snack = "sunflower seed";
+                storeFood(snack);
             }
             else if (snackNum == 1){
                 snack = "millet";
+                storeFood(snack);
             }
             else if (snackNum == 2){
                 snack = "pumpkin seed";
+                storeFood(snack);
             }
-            storeFood(snack);
         }
         else if (num == 0){
             digtunnel();
