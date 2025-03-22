@@ -1,4 +1,6 @@
 package employees;
+import java.util.Scanner;
+
 public class Vet implements Employee {
     private String employeeName;
     private int employeeID;
@@ -47,16 +49,8 @@ public class Vet implements Employee {
         this.role = role;
     }
 
-    // raises the vet's weekly salary by 20% 
-    //(higher increase rate than staff due to the nature of their job)
-    public double givePayRaise() {
-        double increasedPay = getWeeklySalary() * 0.2;
-        setWeeklySalary(increasedPay);
-        return increasedPay;
-    }
-
     // reminds the employee of their tasks based on their role
-    public void assignTasks() {
+    public void checkTasks() {
         if (role.equals("Vet")) {
             System.out.println("Please examine the pets, update treatment plans, and write prescriptions.");
         }

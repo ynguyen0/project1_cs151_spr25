@@ -4,4 +4,5 @@ public interface Employee {
     public void setEmployeeID (int employeeID);
     public void setWeeklySalary(double weeklySalary);
     public void setRole(String role);
+    public void setHoursWorked(double hoursWorked);
 }
