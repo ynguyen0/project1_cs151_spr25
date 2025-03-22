@@ -72,13 +72,29 @@ public class Guest {
     System.out.println("\nProfile updated!");
     
   }
+
+  public static void donateMoney(Scanner donating) {
+    System.out.println("\nHow much money would you like to donate?");
+
+    try
+    { 
+      int donationAmount = donating.nextInt();
+      ShelterManagement.addDonations(donationAmount);
+      System.out.println("\nThank you so much for your generous support! <3");
+    }
+    catch (Exception e)
+    {
+      System.out.println("Error: Invalid input.");
+    }
+
+  } 
         
   public static void main(String[] args) {
     Scanner s = new Scanner(System.in);
 
     System.out.println("\nWelcome to the Animal Shelter Program Terminal!\n");
-    
-    System.out.println("What would you like to do? (Type in corresponding number) \n 1: Get Guest Profile \n 2: Update Guest Profile \n 3: Exit");
+
+    System.out.println("What would you like to do? (Type in corresponding number) \n 1: Get Guest Profile \n 2: Update Guest Profile \n 3: Donate\n 4: Exit");
 
     try
     {
@@ -90,6 +106,9 @@ public class Guest {
           updateGuestProfile(s);
           break;
         case 3:
+          donateMoney(s);
+          break;
+        case 4:
           System.out.println("\nSee you soon!");
           System.exit(0);
           break;

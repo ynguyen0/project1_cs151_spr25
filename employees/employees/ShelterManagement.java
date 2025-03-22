@@ -120,9 +120,13 @@ public class ShelterManagement {
   }
 
   // adds dontaination into current donationBin amount;
-  public void collectDonations(int i) {
+  public static void addDonations(int i) {
     donationBin += i;
-    System.out.printf("You added $d to the donation bin; you now have %d total!", i, donationBin);
+  }
+
+  private static void collectDonations(int i) {
+    donationBin += i;
+    System.out.printf("$d has been added to the donation bin; you now have %d total!", i, donationBin);
   }
 
 }
