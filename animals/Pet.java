@@ -1,3 +1,4 @@
+package animals;
 public abstract class Pet {
     public String name;
     public String species;
