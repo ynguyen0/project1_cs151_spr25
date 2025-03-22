@@ -1,3 +1,4 @@
+package employees;
 public class Appointment {
   
   private String pet;
