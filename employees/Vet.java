@@ -114,7 +114,7 @@ public class Vet implements Employee {
         System.out.println(prescription + " has been added to " + pet.getName() + "'s medication list.");
     }
 
-    public void listPrescription(Pet pet) {
+    public void listPrescriptions(Pet pet) {
         List<String> medicationList = prescriptions.get(pet);
 
         if (medicationList.isEmpty()) {
