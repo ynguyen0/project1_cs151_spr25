@@ -6,12 +6,14 @@ public class Vet implements Employee {
     private int employeeID;
     private double weeklySalary;
     private String role;
+    private double hoursWorked;
 
-    public Vet (String employeeName, int employeeID, double weeklySalary, String role) {
+    public Vet (String employeeName, int employeeID, double weeklySalary, String role, double hoursWorked) {
         this.employeeName = employeeName;
         this.employeeID = employeeID;
         this.weeklySalary = weeklySalary;
         this.role = role;
+        this.hoursWorked = hoursWorked;
     }
 
     public String getEmployeeName() {
@@ -37,6 +39,7 @@ public class Vet implements Employee {
         return weeklySalary;
     }
 
+    @Override
     public void setWeeklySalary(double weeklySalary) {
         this.weeklySalary = weeklySalary;
     }
@@ -45,8 +48,18 @@ public class Vet implements Employee {
         return role;
     }
 
+    @Override
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public double getHoursWorked() {
+        return hoursWorked;
+    }
+
+    @Override
+    public void setHoursWorked(double hoursWorked) {
+        this.hoursWorked = hoursWorked;
     }
 
     // reminds the employee of their tasks based on their role
@@ -63,6 +76,25 @@ public class Vet implements Employee {
         else {
             System.out.println("You have not been assigned any roles or tasks yet.");
         }
+    }
+
+    public void logVitals() {
+        Scanner s = new Scanner(System.in);
+
+        System.out.println("How were the pet's vitals? (Please select: Critical/Normal/Healthy)");
+        String vitals = s.nextLine();
+
+        if (vitals.equals("Critical")) {
+            System.out.println("The pet's vitals have been logged as critical. Please transfer to the hospital.");
+        } else if (vitals.equals("Normal")) {
+            System.out.println("The pet's vitals have been logged as normal. Please continue to monitor.");
+        } else if (vitals.equals("Healthy")) {
+            System.out.println("The pet's vitals are healthy. Please give the pet a treat!");
+        } else {
+            System.out.println("Could not process your input. Please select: Critical/Normal/Healthy");
+        }
+
+        s.close();
     }
 
 }

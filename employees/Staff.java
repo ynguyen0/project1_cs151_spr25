@@ -66,7 +66,7 @@ public class Staff implements Employee {
 
     // allows the staff to check their weekly salary after receiving bonuses
     @SuppressWarnings("resource")
-    public void checkBonuses() {
+    public void checkBonus() {
         Scanner s = new Scanner(System.in);
 
         System.out.println("How much of a bonus were you granted? (Please enter a percentage): ");
