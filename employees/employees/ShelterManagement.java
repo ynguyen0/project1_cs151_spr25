@@ -25,7 +25,7 @@ public class ShelterManagement {
   private static int donationBin;
   private static int funds;
   public static ArrayList<Staff> staff;
-  private static ArrayList<Vet> vets;
+  public static ArrayList<Vet> vets;
   public static HashSet<Pet> pets = new HashSet<Pet>(capacity);
   private static HashMap<Appointment, String> playDates;
 
@@ -405,7 +405,6 @@ public class ShelterManagement {
   public static void setPlaydateAppt(Scanner playdateScheduler) {
 
     try {
-      System.out.println("Enter the owner's name: ");
       String owner = playdateScheduler.nextLine();
       System.out.println("Enter the pet's name: ");
       String pet = playdateScheduler.nextLine();
@@ -419,7 +418,7 @@ public class ShelterManagement {
       String date = playdateScheduler.nextLine();
 
       playDates.put(new Appointment(pet, owner), date);
-      System.out.printf("\nYou have scheduled a new playdate for $s and their pet, $s, on $s.", owner, pet, date);
+      System.out.println("You have scheduled a new appointment with " + pet + " at " + date);
     }
     catch (Exception e)
     {
