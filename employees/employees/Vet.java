@@ -90,7 +90,12 @@ public class Vet implements Employee {
         }
     }
 
+<<<<<<< HEAD:employees/Vet.java
     public void logVitals(Pet pet, Scanner s) {
+=======
+    public void logVitals(Pet pet) {
+        Scanner s = new Scanner(System.in);
+>>>>>>> 0ef2c9d73ae89738913b6c28259b1715ca47cac4:employees/employees/Vet.java
 
         System.out.println("How were the pet's vitals? (Please select: Critical/Normal/Healthy)");
         String vitals = s.nextLine();
@@ -128,7 +133,10 @@ public class Vet implements Employee {
         }
     }
 
+<<<<<<< HEAD:employees/Vet.java
 
+=======
+>>>>>>> 0ef2c9d73ae89738913b6c28259b1715ca47cac4:employees/employees/Vet.java
     public void listPrescription(Pet pet) {
         List<String> medicationList = prescriptions.get(pet);
 
