@@ -17,10 +17,10 @@ public class Guest {
   private static String phoneNumber = "PhoneNumber"; // is a String to account for different formats (w/ or w/o dashes, etc.)
 
   // Class Constructor
-  public Guest(String f, String l, String i) {
+  public Guest(String f, String l, String p) {
     firstName = f;
     lastName = l;
-    phoneNumber = i;
+    phoneNumber = p;
   }
   
   // Prints Guest fields
@@ -31,7 +31,7 @@ public class Guest {
   // Method for updating Guest Profile
   public static void updateGuestProfile(Scanner updateProfile) {
 
-    System.out.println("What would you like to change? \n 1. Name \n 2. Phone Number \n");
+    System.out.println("What would you like to change? \n 1. Name \n 2. Phone Number \n 3: Exit Update Guest Profile");
 
     try 
     {
@@ -57,6 +57,10 @@ public class Guest {
           System.out.printf("Your phone number is now %s.", phoneNumber);
 
           break;
+      
+        case 3:
+          System.out.println("Exiting Update Guest Profile...");
+          return;
 
         default:
           throw new IllegalArgumentException("Sorry, that is not a valid input.");
@@ -68,8 +72,6 @@ public class Guest {
       System.out.println("Error: " + e.getMessage());
       updateGuestProfile(updateProfile);
     }
-
-    System.out.println("\nProfile updated!");
     
   }
 
@@ -79,54 +81,20 @@ public class Guest {
     try
     { 
       int donationAmount = donating.nextInt();
+
+      if (donationAmount < 0) {
+        throw new IllegalArgumentException("Error: Invalid input.");
+      }
+
       ShelterManagement.addDonations(donationAmount);
       System.out.println("\nThank you so much for your generous support! <3");
     }
     catch (Exception e)
     {
-      System.out.println("Error: Invalid input.");
+      System.out.println(e.getMessage());
     }
 
   } 
-        
-  public static void main(String[] args) {
-    Scanner s = new Scanner(System.in);
-
-    System.out.println("\nWelcome to the Animal Shelter Program Terminal!\n");
-
-    System.out.println("What would you like to do? (Type in corresponding number) \n 1: Get Guest Profile \n 2: Update Guest Profile \n 3: Donate\n 4: Exit");
-
-    try
-    {
-      switch(s.nextInt()) {
-        case 1:
-          getGuestProfile();
-          break;
-        case 2:
-          updateGuestProfile(s);
-          break;
-        case 3:
-          donateMoney(s);
-          break;
-        case 4:
-          System.out.println("\nSee you soon!");
-          System.exit(0);
-          break;
-        default:
-          throw new IllegalArgumentException("Sorry, that is an invalid input.");
-      }
-    }
-    catch (IllegalArgumentException e)
-    {
-      System.out.println("\nError: " + e.getMessage());
-    }
-    finally
-    {
-      // restarts main method in case Guest wants to do another option, unless the system has exited
-      main(args);
-    }
-
-  }
 
 }
 
