@@ -1,7 +1,6 @@
 package animals;
 
 import java.util.Scanner;
-import java.util.LinkedList;
 import java.util.Random;
 
 public class Cat extends Pet {
@@ -113,7 +112,7 @@ public class Cat extends Pet {
 
     public void updatePetProfile(Scanner s){
          //Scanner s = new Scanner(System.in);
-         System.out.println("Please select one of the following to update the pet's profile. \n 1. Name \n 2. Species \n 3. Ownership of Pets");
+         System.out.println("Please select one of the following to update the pet's profile. \n 1. Name \n 2. Species \n 4. Health Status\n 5. Adoption status\n 6. Adoptability\n 7. Age\n 8. Exit");
 
         while(s.hasNextInt()){
             if (s.nextInt() == 1){
@@ -223,7 +222,7 @@ public class Cat extends Pet {
                 System.out.printf("%s's breed has been updated to %s.", name, newBreed);
                 setBreed(newBreed);
             }
-            else if (s.next() == "Exit"){
+            else if (s.nextInt() == 12){
                 System.out.print("Updates complete.");
                 break;
             }
@@ -267,13 +266,6 @@ public class Cat extends Pet {
         } 
        
     }
-
-    public void setAppointment(String guestName, int time){
-
-    }
-    public void cancelAppointment(String guestName){}
-    public void checkMeetingTime(){}
-
     
     public void checkActivity(){
 
@@ -302,7 +294,7 @@ public class Cat extends Pet {
 
     public void play(){
         if(temperment == "lazy"){
-            System.out.println(name + "looked at me and went back to sleep. zzzz");
+            System.out.println(name + "looked up and went back to sleep. zzzz");
         }
         else if (temperment == "playful"){
             System.out.println(name + "started chasing a laser. They seem to be having fun.");
