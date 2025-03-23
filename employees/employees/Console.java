@@ -104,7 +104,7 @@ public class Console {
                 System.out.println("Welcome back, " + userName);
                 
 
-                while(s.hasNextInt()){
+                while(true){
                     System.out.println("What would you like to do today?");
 
                     System.out.println("1. Check tasks\n 2. Check Salary\n 3. Request lunch break\n 4. Work Shift\n 5. Exit");
@@ -149,6 +149,7 @@ public class Console {
                         break;
                     }
                 }
+                s.nextLine();
             }
             if (s.nextInt() == 2){
                     System.out.println("Please enter your name");

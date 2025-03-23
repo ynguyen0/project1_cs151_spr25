@@ -25,7 +25,7 @@ public class ShelterManagement {
   private static int donationBin;
   private static int funds;
   public static ArrayList<Staff> staff;
-  private static ArrayList<Vet> vets;
+  public static ArrayList<Vet> vets;
   public static HashSet<Pet> pets = new HashSet<Pet>(capacity);
   private static HashMap<Appointment, String> playDates;
 

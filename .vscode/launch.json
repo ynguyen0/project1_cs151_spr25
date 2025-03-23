@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Console",
+      "request": "launch",
+      "mainClass": "employees.Console",
+      "projectName": "project1_cs151_a6102e1c"
+    },
+    {
+      "type": "java",
       "name": "Current File",
       "request": "launch",
       "mainClass": "${file}",
