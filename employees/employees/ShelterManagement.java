@@ -10,7 +10,7 @@ import java.util.Scanner;
  * Shelter Management class for Animal Shelter program
  *
  * @author: Ashley Roman
- * fields: capcity, donationBin, funds, staff, pets, playDates
+ * fields: capacity, donationBin, funds, staff, pets, playDates
  * methods: updateEmployees(), createNewEmployee(), removeEmployee(), 
  * updateVets(), createNewVet(), removeVet(), 
  * updatePets(), checkPetInSystem(), checkMultiplePetsInRoom(), addPetToRoom(), removePetFromRoom(), setAsAdopted(), 
@@ -83,7 +83,7 @@ public class ShelterManagement {
   }
   
   // Create Employee to add to the staff ArrayList
-  private static Staff createNewEmployee(Scanner employeeCreation) {
+  protected static Staff createNewEmployee(Scanner employeeCreation) {
 
     System.out.println("Please input the employee's name and their employee ID (in this order), separated by a space. Press 0 to exit to main menu.");
     String newEmployeeName = employeeCreation.next();
@@ -118,7 +118,7 @@ public class ShelterManagement {
   }
 
   // Remove Employee from staff ArrayList
-  private static Boolean removeEmployee(Scanner employeeRemoval) {
+  protected static Boolean removeEmployee(Scanner employeeRemoval) {
     System.out.println("Please input the full name of the employee you would like to remove. Press 0 to exit to main menu.");
     String employeeToRemove = employeeRemoval.nextLine();
 
@@ -180,7 +180,7 @@ public class ShelterManagement {
   }
 
   // Create Vet to add to the vets ArrayList
-  private static Staff createNewVet(Scanner vetCreation) {
+  protected static Staff createNewVet(Scanner vetCreation) {
 
     System.out.println("Please input the vet's name and their employee ID (in this order), separated by a space. Press 0 to exit to main menu.");
 
@@ -216,7 +216,7 @@ public class ShelterManagement {
   }
 
   // Remove Vet from vets ArrayList
-  private static Boolean removeVet(Scanner vetRemoval) {
+  protected static Boolean removeVet(Scanner vetRemoval) {
     System.out.println("Please input the full name of the vet you would like to remove. Press 0 to exit to main menu.");
     String vetToRemove = vetRemoval.nextLine();
 
