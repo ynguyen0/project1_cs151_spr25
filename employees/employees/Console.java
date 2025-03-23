@@ -1,12 +1,11 @@
 package employees;
 import java.util.Scanner;
-//import employees.Guest;
 import static employees.Guest.*;
 import animals.*;
 
 public class Console {
     public static void main(String[] args) {
-    ShelterManagement shelter = new ShelterManagement();
+    ShelterManagement shelter = new ShelterManagement(0,0);
 
     shelter.addPet(new Cat("Luna", "Cat", 4, 120, true, false, true, "feisty", true, true, "Shorthair"));
     shelter.addPet(new Cat("Mittens", "Cat", 3, 130, false, false, true, "lazy", false, true, "Calico"));
@@ -21,31 +20,24 @@ public class Console {
     Scanner s = new Scanner(System.in);
 
     System.out.println("\nWelcome to the Animal Shelter Program Terminal!\n");
-
-    //System.out.println("What would you like to do? (Type in corresponding number) \n 1: Get Guest Profile \n 2: Update Guest Profile \n 3: Donate\n 4: Exit");
-
     System.out.println("Please select one of the following options:");
-    System.out.println("1. I am a Guest. \n 2. I am an employee \n 3. Exit \n");
+    System.out.println("1. I am a Guest.\n 2. I am an employee\n 3. Exit\n");
 
     try
     {
       switch(s.nextInt()) {
         case 1:
             System.out.println("What would you like to do today?");
-            System.out.println("1. Schedule an appointment\n 2. Cancel an appointment\n 3. Check appointment time\n 4. I am here for my appointment!\n 5. Update profile\n. 6. Donate money\n 7. Exit");
-            if (s.nextInt() == 1){
-
+            System.out.println("1. Schedule an appointment\n2. Visit or Adopt a pet\n3. Update profile\n4. Donate money\n5. Exit");
+            int selection = s.nextInt();
+            if (selection == 1){
+                ShelterManagement.setPlaydateAppt(s);  
+                break;
             }
-            if (s.nextInt() == 2){
-                
-            }
-            if (s.nextInt() == 3){
-                
-            }
-            if (s.nextInt() == 4){
-                System.out.println("Please enter your name. and the name of the pet you wish to visit");
+            if (selection == 2){
+                System.out.println("Please enter your name.");
                 String userGuest = s.nextLine();
-                System.out.println("Please enter the name of the pet you wish to visit");
+                System.out.println("Please enter the name of the pet you wish to visit.");
                 String petName = s.nextLine();
                 Pet petGuest = null;
                 if(ShelterManagement.checkPetInSystem(petName)){
@@ -68,30 +60,29 @@ public class Console {
                 }
                 
             }
-            if (s.nextInt() == 5){
+            if (selection == 3){
                 //updates guest profile
                 updateGuestProfile(s);
                 break;
             }
-            if (s.nextInt() == 6){
+            if (selection == 4){
                 // donate money 
                 donateMoney(s);
                 break;
             }
-            if (s.nextInt() == 7){
+            if (selection == 5){
                 //exits 
                 System.out.println("Have a nice day!");
                 break;
             }
-            break;
         case 2:
-            System.out.println("Please select role type:\n 1. General staff\n 2. Vet\n 3. Manager\n 4.Exit\n");
+            System.out.println("Please select role type:\n 1. General staff\n 2. Vet\n 3. Exit\n");
             if (s.nextInt() == 1){
                 System.out.println("Please enter your name");
                 s.nextLine();
                 String userName = s.nextLine();
                 Staff curStaff = null;
-                for (Staff staff: shelter.staff) {
+                for (Staff staff: ShelterManagement.staff) {
                     if (staff.getEmployeeName().equals(userName)) {
                         curStaff = staff; // find the current staff
                     }
@@ -132,7 +123,6 @@ public class Console {
                             curStaff.checkBonus(s);
                         }
                         else{
-                            //System.out.print("Would you like to do anything else?");
                             continue;
                         }
                     }
@@ -155,17 +145,17 @@ public class Console {
                     System.out.println("Please enter your name");
                     String curVet = s.nextLine();
                     Vet currentVet = null;
+                    // find the vet 
                     for (Vet vet: ShelterManagement.vets) {
-                        if (vet.getEmployeeName().equals(currentVet)) {
+                        if (vet.getEmployeeName() == curVet) {
                             currentVet = vet; // find the current vet
+                            System.out.println("Hello, you are logged in as " + curVet);
                             break;
                         }
-                        else if (currentVet == null) {
-                            System.out.println(curVet + " does not appear to be in the system.");
-                        }
-                        else{
-                            System.out.println("Hello, you are logged in as " + curVet);
-                        }
+                    }
+                    if (currentVet == null) {
+                        System.out.println(curVet + " does not appear to be in the system.");
+                        break;
                     }
                     while(s.hasNextInt()){
                         System.out.println("What would you like to do today?");
@@ -206,16 +196,6 @@ public class Console {
                                 System.out.println("Could not find this pet.");
                                 continue;
                              }
-
-
-                            System.out.println("Would you like to to do anything else?\n 1. Yes\n 2. No");
-                            int selectedOption = s.nextInt();
-                            if (selectedOption == 1){
-                                 continue;
-                            }
-                            else{
-                                 break;
-                            }
                         }
                         if (s.nextInt() == 3){
                             System.out.print("Please enter the name of the pet you wish to log.");
@@ -258,8 +238,6 @@ public class Console {
                             else {
                                 System.out.println("Could not find this pet.");
                             }
-                           
-                            
                         }
                         if (s.nextInt() == 5){
                             System.out.print("Please enter the name of the pet you wish to log.");
