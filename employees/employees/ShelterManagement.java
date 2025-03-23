@@ -26,8 +26,18 @@ public class ShelterManagement {
   private static int funds;
   private static ArrayList<Staff> staff;
   private static ArrayList<Vet> vets;
-  private static HashSet<Pet> pets = new HashSet<Pet>(capacity);
+  private static HashSet<Pet> pets;
   private static HashMap<Appointment, String> playDates;
+
+  // Class constructor
+  public ShelterManagement(int d, int f) {
+    donationBin = d;
+    funds = f;
+    staff = new ArrayList<Staff>();
+    vets = new ArrayList<Vet>();
+    pets = new HashSet<Pet>(capacity);
+    playDates = new HashMap<Appointment, String>();
+  }
   
   // Method to view, add, or remove employees
   public static void updateEmployees(Scanner employeesUpdating) {
@@ -71,7 +81,6 @@ public class ShelterManagement {
       System.out.println("Error: " + e.getMessage());
     }
   }
-
   // Create Employee to add to the staff ArrayList
   private static Staff createNewEmployee(Scanner employeeCreation) {
 
