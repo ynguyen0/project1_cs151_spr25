@@ -41,7 +41,7 @@ public class ShelterManagement {
   
   // Method to view, add, or remove employees
   public static void updateEmployees(Scanner employeesUpdating) {
-    System.out.println("What would you like to update? Input corresponding number\n 1: View Employees\n 2: Add an Employee\n 3: Remove an Employee\4 4: Exit to Main Menu");
+    System.out.println("What would you like to update? Input corresponding number.\n 1: View Employees\n 2: Add an Employee\n 3: Remove an Employee\n 4: Exit to Main Menu");
     
     try {
       switch(employeesUpdating.nextInt())
@@ -81,6 +81,7 @@ public class ShelterManagement {
       System.out.println("Error: " + e.getMessage());
     }
   }
+  
   // Create Employee to add to the staff ArrayList
   private static Staff createNewEmployee(Scanner employeeCreation) {
 
@@ -100,14 +101,13 @@ public class ShelterManagement {
       employeeCreation.nextLine();
       String newEmployeeRole = employeeCreation.nextLine();
 
-      System.out.printf("Please input %s's weekly salary and work hours per week (in this order), separated by a space.");
+      System.out.printf("Please input %s's weekly salary.", newEmployeeName);
       
       double newEmployeeSalary = employeeCreation.nextDouble();
-      double newEmployeeHours = employeeCreation.nextDouble();
     
       System.out.println("Your new employee has been added to the system.");
 
-      return new Staff(newEmployeeName, newEmployeeID, newEmployeeSalary, newEmployeeRole, newEmployeeHours);
+      return new Staff(newEmployeeName, newEmployeeID, newEmployeeSalary, newEmployeeRole, 0);
     } 
     catch (Exception e) {
       System.out.println("Error: Invalid input.");
@@ -199,14 +199,13 @@ public class ShelterManagement {
       vetCreation.nextLine();
       String newVetRole = vetCreation.nextLine();
 
-      System.out.printf("Please input %s's weekly salary and work hours per week (in this order), separated by a space.");
+      System.out.printf("Please input %s's weekly salary", newVetName);
       
       double newVetSalary = vetCreation.nextDouble();
-      double newVetHours = vetCreation.nextDouble();
     
       System.out.println("Your new vet has been added to the system.");
 
-      return new Staff(newVetName, newVetID, newVetSalary, newVetRole, newVetHours);
+      return new Staff(newVetName, newVetID, newVetSalary, newVetRole, 0);
     } 
     catch (Exception e) {
       System.out.println("Error: Invalid input.");
