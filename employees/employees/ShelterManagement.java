@@ -27,7 +27,7 @@ public class ShelterManagement {
   public static ArrayList<Staff> staff;
   public static ArrayList<Vet> vets;
   public static HashSet<Pet> pets = new HashSet<Pet>(capacity);
-  private static HashMap<Appointment, String> playDates;
+  public static HashMap<Appointment, String> playDates;
 
   // Class constructor
   public ShelterManagement(int d, int f) {

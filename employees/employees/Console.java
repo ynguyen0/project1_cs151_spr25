@@ -1,12 +1,15 @@
 package employees;
 import java.util.Scanner;
-//import employees.Guest;
 import static employees.Guest.*;
 import animals.*;
 
 public class Console {
     public static void main(String[] args) {
+<<<<<<< HEAD
     ShelterManagement shelter = new ShelterManagement(0, 0);
+=======
+    ShelterManagement shelter = new ShelterManagement(0,0);
+>>>>>>> 4993dc79b30f6d20d7244d198c38af3166b514f1
 
     shelter.addPet(new Cat("Luna", "Cat", 4, 120, true, false, true, "feisty", true, true, "Shorthair"));
     shelter.addPet(new Cat("Mittens", "Cat", 3, 130, false, false, true, "lazy", false, true, "Calico"));
@@ -21,9 +24,6 @@ public class Console {
     Scanner s = new Scanner(System.in);
 
     System.out.println("\nWelcome to the Animal Shelter Program Terminal!\n");
-
-    //System.out.println("What would you like to do? (Type in corresponding number) \n 1: Get Guest Profile \n 2: Update Guest Profile \n 3: Donate\n 4: Exit");
-
     System.out.println("Please select one of the following options:");
     System.out.println("1. I am a Guest.\n 2. I am an employee\n 3. Exit\n");
 
@@ -79,7 +79,6 @@ public class Console {
                 System.out.println("Have a nice day!");
                 break;
             }
-            break;
         case 2:
             System.out.println("Please select role type:\n 1. General staff\n 2. Vet\n 3. Manager\n 4.Exit\n");
             if (s.nextInt() == 1){
@@ -128,7 +127,6 @@ public class Console {
                             curStaff.checkBonus(s);
                         }
                         else{
-                            //System.out.print("Would you like to do anything else?");
                             continue;
                         }
                     }
@@ -149,17 +147,17 @@ public class Console {
                     System.out.println("Please enter your name");
                     String curVet = s.nextLine();
                     Vet currentVet = null;
+                    // find the vet 
                     for (Vet vet: ShelterManagement.vets) {
-                        if (vet.getEmployeeName().equals(currentVet)) {
+                        if (vet.getEmployeeName() == curVet) {
                             currentVet = vet; // find the current vet
+                            System.out.println("Hello, you are logged in as " + curVet);
                             break;
                         }
-                        else if (currentVet == null) {
-                            System.out.println(curVet + " does not appear to be in the system.");
-                        }
-                        else{
-                            System.out.println("Hello, you are logged in as " + curVet);
-                        }
+                    }
+                    if (currentVet == null) {
+                        System.out.println(curVet + " does not appear to be in the system.");
+                        break;
                     }
                     while(s.hasNextInt()){
                         System.out.println("What would you like to do today?");
@@ -200,16 +198,6 @@ public class Console {
                                 System.out.println("Could not find this pet.");
                                 continue;
                              }
-
-
-                            System.out.println("Would you like to to do anything else?\n 1. Yes\n 2. No");
-                            int selectedOption = s.nextInt();
-                            if (selectedOption == 1){
-                                 continue;
-                            }
-                            else{
-                                 break;
-                            }
                         }
                         if (s.nextInt() == 3){
                             System.out.print("Please enter the name of the pet you wish to log.");
@@ -252,8 +240,6 @@ public class Console {
                             else {
                                 System.out.println("Could not find this pet.");
                             }
-                           
-                            
                         }
                         if (s.nextInt() == 5){
                             System.out.print("Please enter the name of the pet you wish to log.");
