@@ -95,7 +95,7 @@ public class Console {
                 System.out.println("Welcome back, " + userName);
                 
 
-                while(true){
+                while(s.hasNextInt()){
                     System.out.println("What would you like to do today?");
 
                     System.out.println("1. Check tasks\n 2. Check Salary\n 3. Request lunch break\n 4. Work Shift\n 5. Exit");
@@ -139,8 +139,6 @@ public class Console {
                         break;
                     }
                 }
-                s.nextLine();
-            }
             if (s.nextInt() == 2){
                     System.out.println("Please enter your name");
                     String curVet = s.nextLine();
@@ -267,56 +265,9 @@ public class Console {
                     
                 }
             if (s.nextInt() == 3){
-                System.out.println("[Manager] What would you like to do?\n 1: Add Staff\n 2: Remove Staff\n 3: Add Vet\n 4: Remove Vet\n 5: Exit to main menu.");
-                switch(s.nextInt()) {
-                    case 1: 
-                        System.out.println("First, we need some details about this Employee.");
-                        if(ShelterManagement.createNewEmployee(s) == null)
-                        {  
-                            throw new IllegalArgumentException("Sorry, that input is invalid.");
-                        }
-                        ShelterManagement.staff.add(ShelterManagement.createNewEmployee(s));
-                        break;
-                    case 2:
-                        Boolean removed = ShelterManagement.removeEmployee(s);
-                        if (removed = null) {
-                            throw new IllegalArgumentException("Sorry, that input is invalid.");
-                        }
-                        else if (!removed) {
-                            System.out.println("That employee is not registered in the system. Please try again.");
-                            return;
-                        }
-                        break;
-
-                    case 3:
-                        System.out.println("First, we need some details about this Vet.");
-                        
-                        if(ShelterManagement.createNewVet(s) == null)
-                        {
-                            throw new IllegalArgumentException("Sorry, that input is invalid.");
-                        }
-
-                        ShelterManagement.staff.add(ShelterManagement.createNewVet(s));
-                        break;
-                    case 4:
-                        Boolean removedVet = ShelterManagement.removeVet(s);
-                        if (removedVet = null) {
-                            throw new IllegalArgumentException("Sorry, that input is invalid.");
-                        }
-                        else if (!removedVet) {
-                            System.out.println("That vet is not registered in the system. Please try again.");
-                            return;
-                        }
-                        break;
-
-                    default:
-                        throw new IllegalArgumentException("Sorry, that input is invalid.");
-                }
-                break;
-            }
-            if (s.nextInt() == 4){
                 System.out.println("Have a nice day!");
                 break;
+            }
             }
         case 3:
           System.out.println("\nSee you soon!");
