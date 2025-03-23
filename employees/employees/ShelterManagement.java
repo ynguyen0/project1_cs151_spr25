@@ -10,7 +10,7 @@ import java.util.Scanner;
  * Shelter Management class for Animal Shelter program
  *
  * @author: Ashley Roman
- * fields: capcity, donationBin, funds, staff, pets, playDates
+ * fields: capacity, donationBin, funds, staff, pets, playDates
  * methods: updateEmployees(), createNewEmployee(), removeEmployee(), 
  * updateVets(), createNewVet(), removeVet(), 
  * updatePets(), checkPetInSystem(), checkMultiplePetsInRoom(), addPetToRoom(), removePetFromRoom(), setAsAdopted(), 
@@ -41,7 +41,7 @@ public class ShelterManagement {
   
   // Method to view, add, or remove employees
   public static void updateEmployees(Scanner employeesUpdating) {
-    System.out.println("What would you like to update? Input corresponding number\n 1: View Employees\n 2: Add an Employee\n 3: Remove an Employee\4 4: Exit to Main Menu");
+    System.out.println("What would you like to update? Input corresponding number.\n 1: View Employees\n 2: Add an Employee\n 3: Remove an Employee\n 4: Exit to Main Menu");
     
     try {
       switch(employeesUpdating.nextInt())
@@ -81,8 +81,9 @@ public class ShelterManagement {
       System.out.println("Error: " + e.getMessage());
     }
   }
+  
   // Create Employee to add to the staff ArrayList
-  private static Staff createNewEmployee(Scanner employeeCreation) {
+  protected static Staff createNewEmployee(Scanner employeeCreation) {
 
     System.out.println("Please input the employee's name and their employee ID (in this order), separated by a space. Press 0 to exit to main menu.");
     String newEmployeeName = employeeCreation.next();
@@ -100,14 +101,13 @@ public class ShelterManagement {
       employeeCreation.nextLine();
       String newEmployeeRole = employeeCreation.nextLine();
 
-      System.out.printf("Please input %s's weekly salary and work hours per week (in this order), separated by a space.");
+      System.out.printf("Please input %s's weekly salary.", newEmployeeName);
       
       double newEmployeeSalary = employeeCreation.nextDouble();
-      double newEmployeeHours = employeeCreation.nextDouble();
     
       System.out.println("Your new employee has been added to the system.");
 
-      return new Staff(newEmployeeName, newEmployeeID, newEmployeeSalary, newEmployeeRole, newEmployeeHours);
+      return new Staff(newEmployeeName, newEmployeeID, newEmployeeSalary, newEmployeeRole, 0);
     } 
     catch (Exception e) {
       System.out.println("Error: Invalid input.");
@@ -118,7 +118,7 @@ public class ShelterManagement {
   }
 
   // Remove Employee from staff ArrayList
-  private static Boolean removeEmployee(Scanner employeeRemoval) {
+  protected static Boolean removeEmployee(Scanner employeeRemoval) {
     System.out.println("Please input the full name of the employee you would like to remove. Press 0 to exit to main menu.");
     String employeeToRemove = employeeRemoval.nextLine();
 
@@ -180,7 +180,7 @@ public class ShelterManagement {
   }
 
   // Create Vet to add to the vets ArrayList
-  private static Staff createNewVet(Scanner vetCreation) {
+  protected static Staff createNewVet(Scanner vetCreation) {
 
     System.out.println("Please input the vet's name and their employee ID (in this order), separated by a space. Press 0 to exit to main menu.");
 
@@ -199,14 +199,13 @@ public class ShelterManagement {
       vetCreation.nextLine();
       String newVetRole = vetCreation.nextLine();
 
-      System.out.printf("Please input %s's weekly salary and work hours per week (in this order), separated by a space.");
+      System.out.printf("Please input %s's weekly salary", newVetName);
       
       double newVetSalary = vetCreation.nextDouble();
-      double newVetHours = vetCreation.nextDouble();
     
       System.out.println("Your new vet has been added to the system.");
 
-      return new Staff(newVetName, newVetID, newVetSalary, newVetRole, newVetHours);
+      return new Staff(newVetName, newVetID, newVetSalary, newVetRole, 0);
     } 
     catch (Exception e) {
       System.out.println("Error: Invalid input.");
@@ -217,7 +216,7 @@ public class ShelterManagement {
   }
 
   // Remove Vet from vets ArrayList
-  private static Boolean removeVet(Scanner vetRemoval) {
+  protected static Boolean removeVet(Scanner vetRemoval) {
     System.out.println("Please input the full name of the vet you would like to remove. Press 0 to exit to main menu.");
     String vetToRemove = vetRemoval.nextLine();
 
