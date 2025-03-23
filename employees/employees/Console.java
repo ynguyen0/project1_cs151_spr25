@@ -106,7 +106,7 @@ public class Console {
                         break;
                     }
                 }
-                if (s.nextInt() == 2){
+            if (s.nextInt() == 2){
                     System.out.println("Please enter your name");
                     String curVet = s.nextLine();
                     Vet currentVet;
@@ -181,9 +181,11 @@ zzzzzzzzzzzzzzzzzz
                     }
                     
                 }
-                if (s.nextInt() == 3){
-                    
-                }
+            if (s.nextInt() == 3){
+                System.out.println("Have a nice day!");
+                zzzzzzzzzz
+                break;
+            }
             }
             break;
         case 3:
