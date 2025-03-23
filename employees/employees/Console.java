@@ -65,37 +65,54 @@ public class Console {
                         break;
                     }
                 }
-                System.out.println("Welcome back, " + userName + "\n What would you like to do today?");
-                System.out.println("1. Check tasks\n 2. Check Salary\n 3. Request lunch break\n 4. Work Shift\n 5. Exit");
-                if (s.nextInt() == 1){
-                    System.out.println("Please enter your role:\n 1. Pet Groomer \n2. Pet Caregiver\n3. Volunteer\n4. Exit");
-                    if (s.nextInt() == 1 || s.nextInt() == 2 || s.nextInt() == 3){
-                        curStaff.checkTasks();
-                    } 
+                System.out.println("Welcome back, " + userName);
+                
+
+
+                while(s.hasNextInt()){
+                    System.out.println("What would you like to do today?");
+
+                    System.out.println("1. Check tasks\n 2. Check Salary\n 3. Request lunch break\n 4. Work Shift\n 5. Exit");
+                    if (s.nextInt() == 1){
+                        System.out.println("Please enter your role:\n 1. Pet Groomer \n2. Pet Caregiver\n3. Volunteer\n4. Exit");
+                        if (s.nextInt() == 1 || s.nextInt() == 2 || s.nextInt() == 3){
+                            curStaff.checkTasks();
+                        } 
+                        if (s.nextInt() == 4){
+                            //System.out.println("Have a nice day!");
+                            continue;
+                        }
+                    }
+                    if (s.nextInt() == 2){
+                        System.out.println("Your current weekly salary is $" + curStaff.getWeeklySalary());
+                        System.out.println("Would you like to check your bonus?\n 1. Yes\n 2. No");
+                        if (s.nextInt() == 1){
+                            curStaff.checkBonus(s);
+                        }
+                        else{
+                            //System.out.print("Would you like to do anything else?");
+                            continue;
+                        }
+                    }
+                    if (s.nextInt() == 3){
+                        curStaff.requestLunchBreak(s);
+                    }
                     if (s.nextInt() == 4){
+                        System.out.println("Please enter the number of hours worked today");
+                        int hours = s.nextInt();
+                        curStaff.workShift(hours);
+                    }
+                    if (s.nextInt() == 5){
                         System.out.println("Have a nice day!");
                         break;
                     }
                 }
                 if (s.nextInt() == 2){
-                    curStaff.getWeeklySalary();
+                    
                 }
                 if (s.nextInt() == 3){
                     
                 }
-                if (s.nextInt() == 4){
-                    
-                }
-                if (s.nextInt() == 5){
-                    System.out.println("Have a nice day!");
-                    break;
-                }
-            }
-            if (s.nextInt() == 2){
-                
-            }
-            if (s.nextInt() == 3){
-                
             }
             break;
         case 3:
