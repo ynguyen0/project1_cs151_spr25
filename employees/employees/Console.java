@@ -45,6 +45,9 @@ public class Console {
             if (s.nextInt() == 4){
                 System.out.println("Please enter your name and appointment time");
                 s.next();
+
+                
+
                 System.out.println("Please wait while an employee checks on " + pet.name);
                 pet.checkActivity();
                 System.out.println("Would you like to adopt" + pet.name + " today? Please select one of the following: \n 1. yes!\n 2. no");
@@ -58,6 +61,17 @@ public class Console {
                 
             }
             if (s.nextInt() == 5){
+                //updates guest profile
+                updateGuestProfile(s);
+                break;
+            }
+            if (s.nextInt() == 6){
+                // donate money 
+                donateMoney(s);
+                break;
+            }
+            if (s.nextInt() == 7){
+                //exits 
                 System.out.println("Have a nice day!");
                 break;
             }
