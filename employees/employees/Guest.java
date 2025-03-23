@@ -104,6 +104,11 @@ public class Guest {
     }
 
   } 
+<<<<<<< HEAD
+=======
+        
+  
+>>>>>>> 2d25f1784005e4f4993188d5fe0bae788088b5fd
 
 }
 

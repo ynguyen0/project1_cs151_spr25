@@ -13,10 +13,10 @@ public class Console {
     shelter.addPet(new Hamster("Nibbles", "Hamster", 140, true, false, 1));
     shelter.addPet(new Hamster("Greg", "Hamster", 150, false, true, 2));
 
-    shelter.addEmployee(new Staff("Karina", 100, 1225.21, "Pet Caregiver", 2));
-    shelter.addEmployee(new Staff("Winter", 101, 1240.36, "Pet Groomer", 0));
-    shelter.addEmployee(new Vet("Giselle", 102, 1302.41, "Vet Tech", 4));
-    shelter.addEmployee(new Vet("Ningning", 103, 1402.48, "Vet", 6));
+    shelter.addStaff(new Staff("Karina", 100, 1225.21, "Pet Caregiver", 2));
+    shelter.addStaff(new Staff("Winter", 101, 1240.36, "Pet Groomer", 0));
+    shelter.addVet(new Vet("Giselle", 102, 1302.41, "Vet Tech", 4));
+    shelter.addVet(new Vet("Ningning", 103, 1402.48, "Vet", 6));
 
     Scanner s = new Scanner(System.in);
 

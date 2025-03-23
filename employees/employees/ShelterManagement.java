@@ -24,8 +24,14 @@ public class ShelterManagement {
   private static final int capacity = 15;     // final shelter capacity of 15 pets
   private static int donationBin;
   private static int funds;
+<<<<<<<<< Temporary merge branch 1
   private static ArrayList<Staff> staff;
+  private static ArrayList<Vet> vets;
   private static HashSet<Pet> pets = new HashSet<Pet>(capacity);
+=========
+  public static ArrayList<Staff> staff;
+  public static HashSet<Pet> pets = new HashSet<Pet>(capacity);
+>>>>>>>>> Temporary merge branch 2
   private static HashMap<Appointment, String> playDates;
 
   // Class constructor
@@ -438,31 +444,17 @@ public class ShelterManagement {
     System.out.println("A total of $" + donationBin + " has been collected. There is now $" + funds + "in funding for the shelter!");
     donationBin = 0;
   }
+  
 
   public void addPet(Pet pet) {
     pets.add(pet);
   }
 
-  public void addEmployee(Employee employee) {
-    employees.add(employee);
-  }
-  
-  public static void main(String[] args) {
-    Scanner s = new Scanner(System.in);
-    System.out.println("Welcome to the Animal Shelter Employee Console. What would you like to manage?");
-    System.out.println(" 1: Employees\n 2: Pets\n 3: Playdate Appointments\n 4: Donations\n 5: Exit");
-    
-    switch(s.nextInt()) {
-      case 1:
-        updateEmployees(s);
-        break;
-      case 2:
-        updatePets(s);
-        break;
-    }
-
-
-
+  public void addStaff (Staff staffMember) {
+    staff.add(staffMember);
   }
 
+  public void addVet (Vet vet) {
+    vets.add(vet);
+  }
 }
