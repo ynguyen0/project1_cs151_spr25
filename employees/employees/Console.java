@@ -5,7 +5,7 @@ import animals.*;
 
 public class Console {
     public static void main(String[] args) {
-    ShelterManagement shelter = new ShelterManagement();
+    ShelterManagement shelter = new ShelterManagement(0,0);
 
     shelter.addPet(new Cat("Luna", "Cat", 4, 120, true, false, true, "feisty", true, true, "Shorthair"));
     shelter.addPet(new Cat("Mittens", "Cat", 3, 130, false, false, true, "lazy", false, true, "Calico"));
@@ -94,12 +94,16 @@ public class Console {
                 }
                 System.out.println("Welcome back, " + userName);
                 
+                System.out.println("What would you like to do today?");
+
+                System.out.println("1. Check tasks\n 2. Check Salary\n 3. Request lunch break\n 4. Work Shift\n 5. Exit");
+                int command = s.nextInt(); 
 
                 while(s.hasNextInt()){
                     System.out.println("What would you like to do today?");
 
                     System.out.println("1. Check tasks\n 2. Check Salary\n 3. Request lunch break\n 4. Work Shift\n 5. Exit");
-                    int command = s.nextInt(); 
+                    command = s.nextInt(); 
 
                     if (command == 1){
                         System.out.println("Please enter your role:\n 1. Pet Groomer \n2. Pet Caregiver\n3. Volunteer\n4. Exit");
@@ -159,9 +163,9 @@ public class Console {
                         System.out.println("What would you like to do today?");
     
                         System.out.println("1. Check tasks\n 2. Log vitals\n 3. Add prescription\n 4. List presecription\n 5. Remove prescription\n 6. Exit");
-                        int command = s.nextInt();
+                        int commandd = s.nextInt();
 
-                        if (command == 1){
+                        if (commandd == 1){
                             System.out.println("Please enter your role:\n 1. Vet \n2. Vet tech\n3. Vet assistent\n4. Exit");
                             int role = s.nextInt();
                             if (role == 1 || role == 2 || role == 3){
