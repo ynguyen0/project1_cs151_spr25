@@ -22,8 +22,8 @@ public class ShelterManagement {
   private static final int capacity = 15;     // final shelter capacity of 15 pets
   private static int donationBin;
   private static int funds;
-  private static ArrayList<Staff> staff;
-  private static HashSet<Pet> pets = new HashSet<Pet>(capacity);
+  public static ArrayList<Staff> staff;
+  public static HashSet<Pet> pets = new HashSet<Pet>(capacity);
   private static HashMap<Appointment, String> playDates;
   
   // Method to view, add, or remove employees
