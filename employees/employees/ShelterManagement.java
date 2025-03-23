@@ -24,14 +24,9 @@ public class ShelterManagement {
   private static final int capacity = 15;     // final shelter capacity of 15 pets
   private static int donationBin;
   private static int funds;
-<<<<<<<<< Temporary merge branch 1
-  private static ArrayList<Staff> staff;
-  private static ArrayList<Vet> vets;
-  private static HashSet<Pet> pets = new HashSet<Pet>(capacity);
-=========
   public static ArrayList<Staff> staff;
+  private static ArrayList<Vet> vets;
   public static HashSet<Pet> pets = new HashSet<Pet>(capacity);
->>>>>>>>> Temporary merge branch 2
   private static HashMap<Appointment, String> playDates;
 
   // Class constructor
@@ -282,7 +277,7 @@ public class ShelterManagement {
   }
 
   // Checks if a pet is in pets HashSet. If not, return false,  else return true. 
-  private static boolean checkPetInSystem(String petToSearch) {
+  protected static boolean checkPetInSystem(String petToSearch) {
     for (Pet p : pets) {
       if (p.getName().equalsIgnoreCase(petToSearch)) {
         return true;

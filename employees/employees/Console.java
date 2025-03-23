@@ -43,19 +43,27 @@ public class Console {
                 
             }
             if (s.nextInt() == 4){
-                System.out.println("Please enter your name and appointment time");
-                s.next();
-
-                
-
-                System.out.println("Please wait while an employee checks on " + pet.name);
-                pet.checkActivity();
-                System.out.println("Would you like to adopt" + pet.name + " today? Please select one of the following: \n 1. yes!\n 2. no");
-                if(s.nextInt() == 1){
-                    pet.adopt();
+                System.out.println("Please enter your name. and the name of the pet you wish to visit");
+                String userGuest = s.nextLine();
+                System.out.println("Please enter the name of the pet you wish to visit");
+                String petName = s.nextLine();
+                Pet petGuest = null;
+                if(ShelterManagement.checkPetInSystem(petName)){
+                    for (Pet p : ShelterManagement.pets) {
+                        if (p.getName().equalsIgnoreCase(petName)) {
+                          petGuest = p;
+                        }
+                      }
+                      
+                    System.out.println("Please wait while an employee checks on " + petGuest.name);
+                    petGuest.checkActivity();
+                    System.out.println("Would you like to adopt" + petGuest.name + " today? Please select one of the following: \n 1. yes!\n 2. no");
+                    if(s.nextInt() == 1){
+                        petGuest.adopt(userGuest);
+                    }
                 }
                 else{
-                    System.out.println("Come again soon!");
+                    System.out.print("Pet not found");
                     break;
                 }
                 
@@ -77,7 +85,7 @@ public class Console {
             }
             break;
         case 2:
-            System.out.println("Please select role type:\n 1. General staff\n 2. Vet\n 3. Exit\n");
+            System.out.println("Please select role type:\n 1. General staff\n 2. Vet\n 3. Manager\n 4.Exit\n");
             if (s.nextInt() == 1){
                 System.out.println("Please enter your name");
                 String userName = s.nextLine();
