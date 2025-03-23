@@ -3,9 +3,22 @@ import java.util.Scanner;
 //import employees.Guest;
 import static employees.Guest.*;
 import animals.*;
+import animals.animals.Pet;
 
 public class Console {
     public static void main(String[] args) {
+    ShelterManagement shelter = new ShelterManagement();
+
+    shelter.addPet(new Cat("Luna", "Cat", 4, 120, true, false, true, "feisty", true, true, "Shorthair"));
+    shelter.addPet(new Cat("Mittens", "Cat", 3, 130, false, false, true, "lazy", false, true, "Calico"));
+    shelter.addPet(new Hamster("Nibbles", "Hamster", 140, true, false, 1));
+    shelter.addPet(new Hamster("Greg", "Hamster", 150, false, true, 2));
+
+    shelter.addEmployee(new Staff("Karina", 100, 1225.21, "Pet Caregiver", 2));
+    shelter.addEmployee(new Staff("Winter", 101, 1240.36, "Pet Groomer", 0));
+    shelter.addEmployee(new Vet("Giselle", 102, 1302.41, "Vet Tech", 4));
+    shelter.addEmployee(new Vet("Ningning", 103, 1402.48, "Vet", 6));
+
     Scanner s = new Scanner(System.in);
 
     System.out.println("\nWelcome to the Animal Shelter Program Terminal!\n");
@@ -57,7 +70,7 @@ public class Console {
                 String userName = s.nextLine();
                 Staff curStaff;
                 for (Staff staff: zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz) {
-                    if (staff.getName() == userName) {
+                    if (staff.getEmployeeName() == userName) {
                         curStaff = staff; // find the current staff
                     }
                     else{
@@ -66,8 +79,9 @@ public class Console {
                     }
                 }
                 System.out.println("Welcome back, " + userName);
+                
 
-                // keeps the staff logged in
+
                 while(s.hasNextInt()){
                     System.out.println("What would you like to do today?");
 
@@ -107,78 +121,6 @@ public class Console {
                     }
                 }
                 if (s.nextInt() == 2){
-                    System.out.println("Please enter your name");
-                    String curVet = s.nextLine();
-                    Vet currentVet;
-                    for (Vet vet: zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz) {
-                        if (vet.getEmployeeName() == curVet) {
-                            currentVet = vet; // find the current vet
-                        }
-                        else{
-                            System.out.println(curVet + " does not appear to be in the system.");
-                            break;
-                        }
-                    }
-                    System.out.println("Welcome back, " + curVet);
-
-                    while(s.hasNextInt()){
-                        System.out.println("What would you like to do today?");
-    
-                        System.out.println("1. Check tasks\n 2. Log vitals\n 3. Add prescription\n 4. List presecription\n 5. Remove prescription\n 6. Exit");
-
-                        if (s.nextInt() == 1){
-                            System.out.println("Please enter your role:\n 1. Vet \n2. Vet tech\n3. Vet assistent\n4. Exit");
-                            if (s.nextInt() == 1 || s.nextInt() == 2 || s.nextInt() == 3){
-                                currentVet.checkTasks();
-                            } 
-                            if (s.nextInt() == 4){
-                                //System.out.println("Have a nice day!");
-                                continue;
-                            }
-                        }
-                        if (s.nextInt() == 2){
-                            System.out.print("Please enter the name of the pet you wish to log.");
-                            String petName = s.next();
-
-                            currentVet.logVitals(Pet pet, s);
-                            zzzzzzzzzzzzzzzzzzzzzzzzzzz
-                            System.out.println("Would you like to to do anything else?\n 1. Yes\n 2. No");
-                            if (s.nextInt() == 1){
-                                continue;
-                            }
-                            else{
-                                break;
-                            }
-                        }
-                        if (s.nextInt() == 3){
-                            System.out.print("Please enter the name of the pet you wish to log.");
-                            String petName = s.nextLine();
-zzzzzzzzzzzzzzzzzzzzz
-                            //for loop to find the pet
-
-                            System.out.println("Please enter the name of the prescription.");
-                            String meds = s.nextLine();
-                            currentVet.addPrescription(Pet pet, meds);
-                        }
-                        if (s.nextInt() == 4){
-                            System.out.print("Please enter the name of the pet you wish to log.");
-                            String petName = s.nextLine();
-zzzzzzzzzzzzzzzzzz
-                            //for loop to find the pet
-                            currentVet.listPrescription(Pet pet);
-                        }
-                        if (s.nextInt() == 5){
-                            System.out.print("Please enter the name of the pet you wish to log.");
-                            String petName = s.nextLine();
-zzzzzzzzzzzzzzzzzz
-                            //for loop to find the pet
-                            currentVet.Prescription(Pet pet);
-                        }
-                        if (s.nextInt() == 6){
-                            System.out.println("Have a nice day!");
-                            break;
-                        }
-                    }
                     
                 }
                 if (s.nextInt() == 3){
