@@ -24,7 +24,7 @@ Guests can interact with the pets by booking an appointment to play with them.  
 ```git clone https://github.com/ynguyen0/project1_cs151_spr25.git```
 
 ## Usage
-1. To start the program, run the Console class.
+1. To start the program, run the Console class inside of the employees package.
 2. You will be prompted to select an option from the main menu. Enter the corresponding input to proceed.
 3. From there, additional submenu options will appear based on your selection. Continue choosing options until you reach your desired command.
 4. Once a command is executed, the program will verify this by printing a confirmation message to the console.
