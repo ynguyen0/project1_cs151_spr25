@@ -1,4 +1,5 @@
 package employees;
+
 public class Appointment {
   
   private String pet;
@@ -10,6 +11,3 @@ public class Appointment {
   }
 
 }
-
-
-//       iii. This may vary for integration with the vet class since the vet class also requires an appointment

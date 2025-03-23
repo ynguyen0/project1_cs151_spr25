@@ -17,12 +17,21 @@ public class Guest {
   private static String phoneNumber = "PhoneNumber"; // is a String to account for different formats (w/ or w/o dashes, etc.)
 
   // Class Constructor
-  public Guest(String f, String l, String i) {
+  public Guest(String f, String l, String p) {
     firstName = f;
     lastName = l;
-    phoneNumber = i;
+    phoneNumber = p;
   }
   
+  // method for validing input for Guest's phone number
+  private static String validateInput(Scanner scanner, String input, String toBeValidated) {
+    while (!input.matches(toBeValidated)) {
+      System.out.println("Sorry, that is an invalid input. Please try again.");
+      input = scanner.next();
+    }
+    return input;
+  }
+
   // Prints Guest fields
   public static void getGuestProfile() {
     System.out.printf("\nGuest Information: \nName: %s %s \nPhone Number: %s\n", firstName, lastName, phoneNumber);  
@@ -31,7 +40,7 @@ public class Guest {
   // Method for updating Guest Profile
   public static void updateGuestProfile(Scanner updateProfile) {
 
-    System.out.println("What would you like to change? \n 1. Name \n 2. Phone Number \n");
+    System.out.println("What would you like to change? \n 1. Name \n 2. Phone Number \n 3: Exit Update Guest Profile");
 
     try 
     {
@@ -53,10 +62,14 @@ public class Guest {
           System.out.println("Enter your updated phone number: ");
           String enteredNumber = updateProfile.nextLine();
 
-          phoneNumber = ShelterManagement.validateInput(updateProfile, enteredNumber, "^[0-9\\-\\s]+$"); // calls validation method from ShelterManagement class
+          phoneNumber = validateInput(updateProfile, enteredNumber, "^[0-9\\-\\s]+$"); // calls validation method from ShelterManagement class
           System.out.printf("Your phone number is now %s.", phoneNumber);
 
           break;
+      
+        case 3:
+          System.out.println("Exiting Update Guest Profile...");
+          return;
 
         default:
           throw new IllegalArgumentException("Sorry, that is not a valid input.");
@@ -68,8 +81,6 @@ public class Guest {
       System.out.println("Error: " + e.getMessage());
       updateGuestProfile(updateProfile);
     }
-
-    System.out.println("\nProfile updated!");
     
   }
 
@@ -79,17 +90,20 @@ public class Guest {
     try
     { 
       int donationAmount = donating.nextInt();
+
+      if (donationAmount < 0) {
+        throw new IllegalArgumentException("Error: Invalid input.");
+      }
+
       ShelterManagement.addDonations(donationAmount);
       System.out.println("\nThank you so much for your generous support! <3");
     }
     catch (Exception e)
     {
-      System.out.println("Error: Invalid input.");
+      System.out.println(e.getMessage());
     }
 
   } 
-        
-  
 
 }
 

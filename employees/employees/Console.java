@@ -172,7 +172,7 @@ zzzzzzzzzzzzzzzzzz
                             String petName = s.nextLine();
 zzzzzzzzzzzzzzzzzz
                             //for loop to find the pet
-                            currentVet.Prescription(Pet pet);
+                            currentVet.removePrescription(Pet pet);
                         }
                         if (s.nextInt() == 6){
                             System.out.println("Have a nice day!");
