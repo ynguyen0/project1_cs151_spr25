@@ -76,7 +76,7 @@ public class Console {
                 break;
             }
         case 2:
-            System.out.println("Please select role type:\n 1. General staff\n 2. Vet\n 3. Manager\n 4.Exit\n");
+            System.out.println("Please select role type:\n 1. General staff\n 2. Vet\n 3. Exit\n");
             if (s.nextInt() == 1){
                 System.out.println("Please enter your name");
                 s.nextLine();
