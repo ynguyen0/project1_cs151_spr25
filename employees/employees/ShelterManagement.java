@@ -6,26 +6,27 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Scanner;
 
-// *deleted set capacity, made own capacity of 15
+/**
+ * Shelter Management class for Animal Shelter program
+ *
+ * @author: Ashley Roman
+ * fields: capcity, donationBin, funds, staff, pets, playDates
+ * methods: updateEmployees(), createNewEmployee(), removeEmployee(), updatePets(), checkPetInSystem(), 
+ * checkMultiplePetsInRoom(), addPetToRoom(), removePetFromRoom(), setAsAdopted(), setPlaydateAppt(), 
+ * addDonations(), collectDonations();
+ *
+ */
 
 public class ShelterManagement {
 
-  private static final int capacity = 15;
+  private static final int capacity = 15;     // final shelter capacity of 15 pets
   private static int donationBin;
   private static int funds;
   private static ArrayList<Staff> staff;
   private static HashSet<Pet> pets = new HashSet<Pet>(capacity);
-  private HashMap<Appointment, String> playDates;
+  private static HashMap<Appointment, String> playDates;
   
-  static String validateInput(Scanner scanner, String input, String toBeValidated) {
-    while (!input.matches(toBeValidated)) {
-      System.out.println("Sorry, that is an invalid input. Please try again.");
-      input = scanner.next();
-    }
-    return input;
-  }
-
-  // method for either adding or removing an employee
+  // Method to view, add, or remove employees
   public static void updateEmployees(Scanner employeesUpdating) {
     System.out.println("What would you like to update? Input corresponding number\n 1: View Employees\n 2: Add an Employee\n 3: Remove an Employee\4 4: Exit to Main Menu");
     
@@ -35,7 +36,7 @@ public class ShelterManagement {
         case 1:
           System.out.println("All Employees:\n" + staff.toString());
           break;
-          
+         
         case 2:
           System.out.println("First, we need some details about this Employee.");
           
@@ -68,6 +69,7 @@ public class ShelterManagement {
     }
   }
 
+  // Create Employee to add the staff ArrayList
   private static Staff createNewEmployee(Scanner employeeCreation) {
 
     System.out.println("Please input the employee's name and their employee ID (in this order), separated by a space. Press 0 to exit to main menu.");
@@ -78,24 +80,32 @@ public class ShelterManagement {
       return null;
     }
 
-    int newEmployeeID = employeeCreation.nextInt();
+    try {
+      int newEmployeeID = employeeCreation.nextInt();
 
-    System.out.printf("Please input %s's role.\n", newEmployeeName);
+      System.out.printf("Please input %s's role.\n", newEmployeeName);
 
-    employeeCreation.nextLine();
-    String newEmployeeRole = employeeCreation.nextLine();
+      employeeCreation.nextLine();
+      String newEmployeeRole = employeeCreation.nextLine();
 
-    System.out.printf("Please input %s's weekly salary and work hours per week (in this order), separated by a space.");
+      System.out.printf("Please input %s's weekly salary and work hours per week (in this order), separated by a space.");
+      
+      double newEmployeeSalary = employeeCreation.nextDouble();
+      double newEmployeeHours = employeeCreation.nextDouble();
     
-    double newEmployeeSalary = employeeCreation.nextDouble();
-    double newEmployeeHours = employeeCreation.nextDouble();
-  
-    System.out.println("Your new employee has been added to the system.");
+      System.out.println("Your new employee has been added to the system.");
 
-    return new Staff(newEmployeeName, newEmployeeID, newEmployeeSalary, newEmployeeRole, newEmployeeHours);
+      return new Staff(newEmployeeName, newEmployeeID, newEmployeeSalary, newEmployeeRole, newEmployeeHours);
+    } 
+    catch (Exception e) {
+      System.out.println("Error: Invalid input.");
+    }
+
+    return null;
 
   }
 
+  // Remove Employee from staff ArrayList
   private static Boolean removeEmployee(Scanner employeeRemoval) {
     System.out.println("Please input the full name of the employee you would like to remove. Press 0 to exit to main menu.");
     String employeeToRemove = employeeRemoval.nextLine();
@@ -114,39 +124,48 @@ public class ShelterManagement {
     return false;
   }
 
+  // Methods to view pets, add or remove pets, or set a pet as adopted
   public static void updatePets(Scanner petsUpdating) {
     System.out.println("What would you like to do?");
     System.out.println(" 1: View Pets in Rooms\n 2: Add Pet to a Room \n 3: Remove Pet from a Room \n 4: Set Pet as Adopted\n 4: Exit to Main Menu");
 
-    switch(petsUpdating.nextInt())
-    {
-      case 1:
-        for (int i = 0; i < capacity; i++) {
-          if(pets.get(i) == null) {
-            System.out.println("Room #" + i+1 + ": [No Occupying Pet]");
-          } else {
-           System.out.println("Room #" + i+1 + ": " + pets.get(i));
-          }   
-        }
-        break;
-      case 2:
-        addPetToRoom(petsUpdating);
-        break;
-      case 3:
-        removePetFromRoom(petsUpdating);
-        break;
-      case 4:
-        setAsAdopted(petsUpdating);
-        break;
-      case 5:
-        System.out.println("Exiting Update Pets...");
-        return;
-        
-
+    try{
+      switch(petsUpdating.nextInt())
+      {
+        case 1:
+          int index = 1;
+          for (Pet p : pets) {
+            if(p.roomNumber == 0) {
+              System.out.println("Room #" + index + ": [No Occupying Pet]");
+            } else {
+              System.out.println("Room #" + index + ": " + p.getName());
+            }   
+            index++;
+          }
+          break;
+        case 2:
+          addPetToRoom(petsUpdating);
+          break;
+        case 3:
+          removePetFromRoom(petsUpdating);
+          break;
+        case 4:
+          setAsAdopted(petsUpdating);
+          break;
+        case 5:
+          System.out.println("Exiting Update Pets...");
+          return;
+        default:
+          throw new IllegalArgumentException("Error: Invalid input");
+      }
+    } 
+    catch (Exception e) {
+      System.out.println(e.getMessage());
     }
 
   }
 
+  // Checks if a pet is in pets HashSet. If not, return false,  else return true. 
   private static boolean checkPetInSystem(String petToSearch) {
     for (Pet p : pets) {
       if (p.getName().equalsIgnoreCase(petToSearch)) {
@@ -156,6 +175,7 @@ public class ShelterManagement {
     return false;
   }
 
+  // Checks if a room is already occupied. If so, returns the number of occupants in room (though it should never be more than 1)
   private static int checkMultiplePetsInRoom(int roomToCheck) {
     int occurrence = 0;
 
@@ -168,6 +188,7 @@ public class ShelterManagement {
     return occurrence;
   }
 
+  // Add a pet to pets HashSet
   private static void addPetToRoom(Scanner addingPet) {
     System.out.println("Please enter the name of the pet you would like to add to a room. Press 0 to exit.\n");
     String petToAdd = addingPet.nextLine();
@@ -207,6 +228,7 @@ public class ShelterManagement {
 
   }
 
+  // Remove a pet to pets HashSet
   private static void removePetFromRoom(Scanner removingPet) {
     System.out.println("Please enter the name of the pet you would like to remove from a room. Press 0 to exit to main menu.\n");
     String petToRemove = removingPet.nextLine();
@@ -236,6 +258,7 @@ public class ShelterManagement {
     }
   } 
 
+  // Set a pet's isAdopted field accordingly
   private static void setAsAdopted(Scanner adoptingPet) {
 
     if (pets.isEmpty()) {
@@ -265,51 +288,45 @@ public class ShelterManagement {
       }
     }
 
+  }
+
+  // Schedule playdate with an owner, pet, and date
+  public static void setPlaydateAppt(Scanner playdateScheduler) {
+
+    try {
+      System.out.println("Enter the owner's name: ");
+      String owner = playdateScheduler.nextLine();
+      System.out.println("Enter the pet's name: ");
+      String pet = playdateScheduler.nextLine();
+
+      if(!checkPetInSystem(pet)) {
+        System.out.println("That pet is not currently in the system. Please try again.");
+        return;
+      }
+
+      System.out.println("Enter the date to be scheduled: ");
+      String date = playdateScheduler.nextLine();
+
+      playDates.put(new Appointment(pet, owner), date);
+      System.out.printf("\nYou have scheduled a new playdate for $s and their pet, $s, on $s.", owner, pet, date);
+    }
+    catch (Exception e)
+    {
+      System.out.println("Error: Invalid input.");
+    }
 
   }
 
-  public void setPlaydateAppt(Scanner playdateScheduler) {
-
-    System.out.println("Enter the owner's name: ");
-    String owner = playdateScheduler.nextLine();
-    System.out.println("Enter the pet's name: ");
-    String pet = playdateScheduler.nextLine();
-
-    System.out.println("Enter the date to be scheduled: ");
-    String date = playdateScheduler.nextLine();
-
-    playDates.put(new Appointment(pet, owner), date);
-    System.out.printf("You have scheduled a new playdate for $s and their pet, $s, on $s.", owner, pet, date);
-
-  }
-
-  // adds donation into current donationBin amount;
+  // Used from Guest class; add's Guest's donation amount to donationBin
   public static void addDonations(int i) {
     donationBin += i;
   }
 
+  // Adds money from donationBin to funds, and resets donationBin to 0
   static void collectDonations() {
     funds += donationBin;
     System.out.println("A total of $" + donationBin + " has been collected. There is now $" + funds + "in funding for the shelter!");
     donationBin = 0;
-  }
-
-  public static void main(String[] args) {
-    Scanner s = new Scanner(System.in);
-    System.out.println("Welcome to the Animal Shelter Employee Console. What would you like to manage?");
-    System.out.println(" 1: Employees\n 2: Pets\n 3: Playdate Appointments\n 4: Donations\n 5: Exit");
-    
-    switch(s.nextInt()) {
-      case 1:
-        updateEmployees(s);
-        break;
-      case 2:
-        updatePets(s);
-        break;
-    }
-
-
-
   }
 
 }

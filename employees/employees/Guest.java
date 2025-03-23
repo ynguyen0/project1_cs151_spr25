@@ -23,6 +23,15 @@ public class Guest {
     phoneNumber = p;
   }
   
+  // method for validing input for Guest's phone number
+  private static String validateInput(Scanner scanner, String input, String toBeValidated) {
+    while (!input.matches(toBeValidated)) {
+      System.out.println("Sorry, that is an invalid input. Please try again.");
+      input = scanner.next();
+    }
+    return input;
+  }
+
   // Prints Guest fields
   public static void getGuestProfile() {
     System.out.printf("\nGuest Information: \nName: %s %s \nPhone Number: %s\n", firstName, lastName, phoneNumber);  
@@ -53,7 +62,7 @@ public class Guest {
           System.out.println("Enter your updated phone number: ");
           String enteredNumber = updateProfile.nextLine();
 
-          phoneNumber = ShelterManagement.validateInput(updateProfile, enteredNumber, "^[0-9\\-\\s]+$"); // calls validation method from ShelterManagement class
+          phoneNumber = validateInput(updateProfile, enteredNumber, "^[0-9\\-\\s]+$"); // calls validation method from ShelterManagement class
           System.out.printf("Your phone number is now %s.", phoneNumber);
 
           break;
