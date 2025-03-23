@@ -432,4 +432,15 @@ public class ShelterManagement {
   }
   
 
+  public void addPet(Pet pet) {
+    pets.add(pet);
+  }
+
+  public void addStaff (Staff staffMember) {
+    staff.add(staffMember);
+  }
+
+  public void addVet (Vet vet) {
+    vets.add(vet);
+  }
 }
