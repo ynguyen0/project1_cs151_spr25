@@ -1,4 +1,4 @@
-# project1_cs151
+# Project 1: CS 151, Spring 2025
 ## Overview
 For Project 1, we created an Animal Shelter Management Program. The shelter management class manages the employees that work at this shelter. There are two types of employees- Staff and Vets, who are responsible for ensuring that our pets are healthy and well taken care of. This shelter currently only carries Hamsters and Cats, which are adoptable by guests that visit the shelter. They can also schedule playtime appointments to decide if the pet is a perfect match for them.
 
