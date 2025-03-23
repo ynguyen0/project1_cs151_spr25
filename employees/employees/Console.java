@@ -67,15 +67,16 @@ public class Console {
             if (s.nextInt() == 1){
                 System.out.println("Please enter your name");
                 String userName = s.nextLine();
-                Staff curStaff;
-                for (Staff staff: zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz) {
+                Staff curStaff = null;
+                for (Staff staff: shelter.staff) {
                     if (staff.getEmployeeName() == userName) {
                         curStaff = staff; // find the current staff
                     }
-                    else{
-                        System.out.println(userName + " does not appear to be in the system.");
-                        break;
-                    }
+                    
+                }
+                if (curStaff == null){
+                    System.out.println(userName + " does not appear to be in the system.");
+                    break;
                 }
                 System.out.println("Welcome back, " + userName);
                 
@@ -123,7 +124,7 @@ public class Console {
                     System.out.println("Please enter your name");
                     String curVet = s.nextLine();
                     Vet currentVet;
-                    for (Vet vet: zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz) {
+          qqqqqqqqqqqqqqqqqq          for (Vet vet: shelter.) {
                         if (vet.getEmployeeName() == curVet) {
                             currentVet = vet; // find the current vet
                         }
@@ -152,40 +153,86 @@ public class Console {
                         if (s.nextInt() == 2){
                             System.out.print("Please enter the name of the pet you wish to log.");
                             String petName = s.next();
-
-                            currentVet.logVitals(Pet pet, s);
-                            zzzzzzzzzzzzzzzzzzzzzzzzzzz
-                            System.out.println("Would you like to to do anything else?\n 1. Yes\n 2. No");
-                            if (s.nextInt() == 1){
+                             //for loop to find the pet                           
+                             Pet pet = null;
+                             //for loop to find the pet
+                             for(Pet p: shelter.pets){
+                                 if (p.name == petName){
+                                     pet = p;
+                                     break;
+                                 }
+                             }
+                             if (pet != null){
+                                currentVet.logVitals(pet, s);
+                             }
+                             else{
+                                System.out.println("Pet not found");
                                 continue;
-                            }
-                            else{
-                                break;
-                            }
+                             }
+
+
+                            // System.out.println("Would you like to to do anything else?\n 1. Yes\n 2. No");
+                            // if (s.nextInt() == 1){
+                            //     continue;
+                            // }
+                            // else{
+                            //     break;
+                            // }
                         }
                         if (s.nextInt() == 3){
                             System.out.print("Please enter the name of the pet you wish to log.");
                             String petName = s.nextLine();
-zzzzzzzzzzzzzzzzzzzzz
+                            //for loop to find the pet                           
+                            Pet pet = null;
                             //for loop to find the pet
+                            for(Pet p: shelter.pets){
+                                if (p.name == petName){
+                                    pet = p;
+                                    break;
+                                }
+                            }
+                            if (pet != null){
+                                System.out.println("Please enter the name of the prescription.");
+                                String meds = s.nextLine();
+                                currentVet.addPrescription(pet, meds);
+                            }
 
-                            System.out.println("Please enter the name of the prescription.");
-                            String meds = s.nextLine();
-                            currentVet.addPrescription(Pet pet, meds);
                         }
                         if (s.nextInt() == 4){
                             System.out.print("Please enter the name of the pet you wish to log.");
                             String petName = s.nextLine();
-zzzzzzzzzzzzzzzzzz
                             //for loop to find the pet
-                            currentVet.listPrescription(Pet pet);
+
+                            Pet pet = null;
+                            //for loop to find the pet
+                            for(Pet p: shelter.pets){
+                                if (p.name == petName){
+                                    pet = p;
+                                    break;
+                                }
+                            }
+                            if (pet != null){
+                                currentVet.listPrescription(pet);
+                            }
+                           
+                            
                         }
                         if (s.nextInt() == 5){
                             System.out.print("Please enter the name of the pet you wish to log.");
                             String petName = s.nextLine();
-zzzzzzzzzzzzzzzzzz
+                            Pet pet = null;
                             //for loop to find the pet
-                            currentVet.removePrescription(Pet pet);
+                            for(Pet p: shelter.pets){
+                                if (p.name == petName){
+                                    pet = p;
+                                    break;
+                                }
+                            }
+                            if (pet != null){
+                                System.out.println("Please enter the name of the prescription.");
+                                String meds = s.nextLine();
+                                currentVet.removePrescription(pet, meds);
+                            }
                         }
                         if (s.nextInt() == 6){
                             System.out.println("Have a nice day!");
@@ -196,11 +243,9 @@ zzzzzzzzzzzzzzzzzz
                 }
             if (s.nextInt() == 3){
                 System.out.println("Have a nice day!");
-                zzzzzzzzzz
                 break;
             }
             }
-            break;
         case 3:
           System.out.println("\nSee you soon!");
           System.exit(0);

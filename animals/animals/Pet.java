@@ -11,10 +11,7 @@ public abstract class Pet {
 
     public abstract void updatePetProfile(Scanner s);
     public abstract void getPetProfile();
-    // public abstract void setAdoptionStatus();
     public abstract void adopt(String guestname);
-
-    //public abstract void play(String guestName);
     public abstract void eat();
     public abstract String getName();
     public abstract void checkActivity();
