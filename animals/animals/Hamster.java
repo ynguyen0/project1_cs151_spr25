@@ -10,6 +10,10 @@ public class Hamster extends Pet {
 
     public Hamster(String name, String species, int roomNumber, boolean isHealthy, boolean isAdopted, int age){
         cheek = new LinkedList<>();
+        cheek.add("a piece of tv cable?");
+        cheek.add("sunflower seeds");
+        cheek.add("grains");
+        cheek.add("string cheese");
         this.name = name;
         this.species = species;
         this.roomNumber = roomNumber;
@@ -20,6 +24,10 @@ public class Hamster extends Pet {
 
     public Hamster(String name){
         cheek = new LinkedList<>();
+        cheek.add("a piece of tv cable?");
+        cheek.add("sunflower seeds");
+        cheek.add("grains");
+        cheek.add("string cheese");
         this.name = name;
     }
 
@@ -84,9 +92,9 @@ public class Hamster extends Pet {
         System.out.println("Age: " + age);
     }
 
-        public void updatePetProfile(Scanner s){
+    public void updatePetProfile(Scanner s){
          //Scanner s = new Scanner(System.in);
-         System.out.println("Please select one of the following to update the pet's profile. \n 1. Name \n 2. Species \n 3. Ownership of Pets");
+         System.out.println("Please select one of the following to update the pet's profile. \n 1. Name \n 2. Species \n 4. Health Status\n 5. Adoption status\n 6. Adoptability\n 7. Age\n 8. Exit");
 
         while(s.hasNextInt()){
             if (s.nextInt() == 1){
@@ -101,13 +109,13 @@ public class Hamster extends Pet {
                 System.out.printf("%s's species has been changed to %s.", name, newSpecies);
                 setSpecies(newSpecies);
             }
-            else if (s.nextInt() == 3){
-                System.out.println("Enter updated room number: ");
-                // follow room number logic with the shelter
-                int newRoomNumber = s.nextInt();
-               ///// System.out.printf("%s's species has been changed to %s.", name, newSpecies);
-                roomNumber = newRoomNumber;
-            }
+            // else if (s.nextInt() == 3){
+            //     System.out.println("Enter updated room number: ");
+            //     // follow room number logic with the shelter
+            //     int newRoomNumber = s.nextInt();
+            //    ///// System.out.printf("%s's species has been changed to %s.", name, newSpecies);
+            //     roomNumber = newRoomNumber;
+            // }
             else if (s.nextInt() == 4){
                 System.out.println("Enter updated health status: \n 1. healthy \n 2. unhealthy");
                 int newHealthInt = s.nextInt();
@@ -158,7 +166,7 @@ public class Hamster extends Pet {
                 System.out.printf("%s's age has been updated to %d.", name, newAge);
                 setAge(newAge);
             }
-            else if (s.next() == "Exit"){
+            else if (s.nextInt() == 8){
                 System.out.print("Updates complete.");
                 break;
             }
@@ -182,11 +190,6 @@ public class Hamster extends Pet {
         }       
     }
 
-
-    public void setAppointment(String guestName, int time){}
-    public void cancelAppointment(String guestName){}
-    public void checkMeetingTime(){}
-
     public void checkActivity(){
 
         Random randomNumGen = new Random();
@@ -205,18 +208,24 @@ public class Hamster extends Pet {
             nap();
         }
         else if (num == 5){
-            int snackNum = randomNumGen.nextInt(3);
+            int snackNum = randomNumGen.nextInt(4);
             String snack;
             if (snackNum == 0){
-                snack = "sunflower seed";
+                snack = "sunflower seeds";
+                storeFood(snack);
             }
             else if (snackNum == 1){
-                snack = "millet";
+                snack = "millet seeds";
+                storeFood(snack);
             }
             else if (snackNum == 2){
-                snack = "pumpkin seed";
+                snack = "pumpkin seeds";
+                storeFood(snack);
             }
-            storeFood(snack);
+            else if (snackNum == 3){
+                snack = "a piece of television wire??";
+                storeFood(snack);
+            }
         }
         else if (num == 0){
             digtunnel();
@@ -224,7 +233,12 @@ public class Hamster extends Pet {
     }
 
     public void eat(){
-        System.out.println(name + " ate a sunflower seed.");
+        if(cheek.size() > 0){
+            System.out.println(name + "ate the " + cheek.remove() + "it was storing in its cheek");
+        }
+        else{
+            System.out.println(name + " is eating a large mouthful of seeds.");
+        }
     }
 
     public void runInMaze(){

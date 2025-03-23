@@ -24,9 +24,9 @@ public class ShelterManagement {
   private static final int capacity = 15;     // final shelter capacity of 15 pets
   private static int donationBin;
   private static int funds;
-  private static ArrayList<Staff> staff;
+  public static ArrayList<Staff> staff;
   private static ArrayList<Vet> vets;
-  private static HashSet<Pet> pets;
+  public static HashSet<Pet> pets = new HashSet<Pet>(capacity);
   private static HashMap<Appointment, String> playDates;
 
   // Class constructor
@@ -276,7 +276,7 @@ public class ShelterManagement {
   }
 
   // Checks if a pet is in pets HashSet. If not, return false,  else return true. 
-  private static boolean checkPetInSystem(String petToSearch) {
+  protected static boolean checkPetInSystem(String petToSearch) {
     for (Pet p : pets) {
       if (p.getName().equalsIgnoreCase(petToSearch)) {
         return true;
@@ -438,5 +438,17 @@ public class ShelterManagement {
     System.out.println("A total of $" + donationBin + " has been collected. There is now $" + funds + "in funding for the shelter!");
     donationBin = 0;
   }
+  
 
+  public void addPet(Pet pet) {
+    pets.add(pet);
+  }
+
+  public void addStaff (Staff staffMember) {
+    staff.add(staffMember);
+  }
+
+  public void addVet (Vet vet) {
+    vets.add(vet);
+  }
 }

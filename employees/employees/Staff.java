@@ -70,8 +70,8 @@ public class Staff implements Employee {
 
     // allows the staff to check their weekly salary after receiving bonuses
     @SuppressWarnings("resource")
-    public void checkBonus() {
-        Scanner s = new Scanner(System.in);
+    public void checkBonus(Scanner s) {
+        //Scanner s = new Scanner(System.in);
 
         System.out.println("How much of a bonus were you granted? (Please enter a percentage): ");
         double bonusPercentage = s.nextDouble();
@@ -104,8 +104,8 @@ public class Staff implements Employee {
     }
 
     // the staff can request a lunch break after the fourth hour of their shift is completed
-    public void requestLunchBreak() {
-        Scanner s = new Scanner(System.in);
+    public void requestLunchBreak(Scanner s) {
+       // Scanner s = new Scanner(System.in);
     
         try {
             System.out.println("Please log the number of hours you worked so far: ");
@@ -145,25 +145,27 @@ public class Staff implements Employee {
     }
 
     // increments the hours worked by an employee during a shift
-    public void workShift() {
+    public void workShift(int hours) {
         System.out.println("Thanks for clocking into your shift.");
-        
-        while (hoursWorked < 10) {
-            if (hoursWorked == 0) {
-                System.out.println("Your shift has just started.");
+            if (hours == -1){
+                System.out.println("Day reset to 0.");
+                
             }
-            else if (hoursWorked >= 1 && hoursWorked <= 8) {
-                System.out.println("You have been working for " + hoursWorked + " hours. Great job!");
-            }
-            else if (hoursWorked == 8) {
-                System.out.println("Thanks for clocking out.");
-                break;
-            }
-            else if (hoursWorked > 8) {
-                System.out.println("Looks like you're working overtime. Thanks for your hard work!");
-                break;
-            }
-            hoursWorked++;
+            else{
+                hoursWorked += hours;
+                if (hoursWorked == 0) {
+                    System.out.println("Your shift has just started.");
+                }
+                else if (hoursWorked >= 1 && hoursWorked <= 8) {
+                    System.out.println("You have been working for " + hoursWorked + " hours. Great job!");
+                }
+                else if (hoursWorked == 8) {
+                    System.out.println("Thanks for clocking out.");
+                }
+                else if (hoursWorked > 8) {
+                    System.out.println("Looks like you're working overtime. Thanks for your hard work!");
+                }
         }
+        
     }
 }
