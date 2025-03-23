@@ -6,6 +6,18 @@ import animals.*;
 
 public class Console {
     public static void main(String[] args) {
+    ShelterManagement shelter = new ShelterManagement();
+
+    shelter.addPet(new Cat("Luna", "Cat", 4, 120, true, false, true, "feisty", true, true, "Shorthair"));
+    shelter.addPet(new Cat("Mittens", "Cat", 3, 130, false, false, true, "lazy", false, true, "Calico"));
+    shelter.addPet(new Hamster("Nibbles", "Hamster", 140, true, false, 1));
+    shelter.addPet(new Hamster("Greg", "Hamster", 150, false, true, 2));
+
+    shelter.addEmployee(new Staff("Karina", 100, 1225.21, "Pet Caregiver", 2));
+    shelter.addEmployee(new Staff("Winter", 101, 1240.36, "Pet Groomer", 0));
+    shelter.addEmployee(new Vet("Giselle", 102, 1302.41, "Vet Tech", 4));
+    shelter.addEmployee(new Vet("Ningning", 103, 1402.48, "Vet", 6));
+
     Scanner s = new Scanner(System.in);
 
     System.out.println("\nWelcome to the Animal Shelter Program Terminal!\n");
@@ -57,7 +69,7 @@ public class Console {
                 String userName = s.nextLine();
                 Staff curStaff;
                 for (Staff staff: zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz) {
-                    if (staff.getName() == userName) {
+                    if (staff.getEmployeeName() == userName) {
                         curStaff = staff; // find the current staff
                     }
                     else{
@@ -66,8 +78,9 @@ public class Console {
                     }
                 }
                 System.out.println("Welcome back, " + userName);
+                
 
-                // keeps the staff logged in
+
                 while(s.hasNextInt()){
                     System.out.println("What would you like to do today?");
 

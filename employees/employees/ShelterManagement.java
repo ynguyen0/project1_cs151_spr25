@@ -329,4 +329,30 @@ public class ShelterManagement {
     donationBin = 0;
   }
 
+  public void addPet(Pet pet) {
+    pets.add(pet);
+  }
+
+  public void addEmployee(Employee employee) {
+    employees.add(employee);
+  }
+  
+  public static void main(String[] args) {
+    Scanner s = new Scanner(System.in);
+    System.out.println("Welcome to the Animal Shelter Employee Console. What would you like to manage?");
+    System.out.println(" 1: Employees\n 2: Pets\n 3: Playdate Appointments\n 4: Donations\n 5: Exit");
+    
+    switch(s.nextInt()) {
+      case 1:
+        updateEmployees(s);
+        break;
+      case 2:
+        updatePets(s);
+        break;
+    }
+
+
+
+  }
+
 }
