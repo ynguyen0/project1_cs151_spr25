@@ -33,7 +33,7 @@ Guests can interact with the pets by booking an appointment to play with them.  
 ## Contribution
 Kalyn Bui: Kalyn was in charge of the classes Pet, Hamster, and Cat, and Console. 
 
-Ashley Roman: Ashley was in charge of the classes Shelter, Adopter, and Appointment.
+Ashley Roman: Ashley was in charge of the classes ShelterManagement, Guest, and Appointment.
 
 Ynha Nguyen: Ynha was in charge of the classes Employee, Vet, Staff.
 
