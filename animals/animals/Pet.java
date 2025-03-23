@@ -17,4 +17,5 @@ public abstract class Pet {
     //public abstract void play(String guestName);
     public abstract void eat();
     public abstract String getName();
+    public abstract void checkActivity();
 }
