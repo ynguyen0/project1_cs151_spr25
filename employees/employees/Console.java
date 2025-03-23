@@ -3,7 +3,6 @@ import java.util.Scanner;
 //import employees.Guest;
 import static employees.Guest.*;
 import animals.*;
-import animals.animals.Pet;
 
 public class Console {
     public static void main(String[] args) {
