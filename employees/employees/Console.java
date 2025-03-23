@@ -5,11 +5,7 @@ import animals.*;
 
 public class Console {
     public static void main(String[] args) {
-<<<<<<< HEAD
-    ShelterManagement shelter = new ShelterManagement(0, 0);
-=======
     ShelterManagement shelter = new ShelterManagement(0,0);
->>>>>>> 4993dc79b30f6d20d7244d198c38af3166b514f1
 
     shelter.addPet(new Cat("Luna", "Cat", 4, 120, true, false, true, "feisty", true, true, "Shorthair"));
     shelter.addPet(new Cat("Mittens", "Cat", 3, 130, false, false, true, "lazy", false, true, "Calico"));
@@ -80,7 +76,7 @@ public class Console {
                 break;
             }
         case 2:
-            System.out.println("Please select role type:\n 1. General staff\n 2. Vet\n 3. Manager\n 4.Exit\n");
+            System.out.println("Please select role type:\n 1. General staff\n 2. Vet\n 3. Exit\n");
             if (s.nextInt() == 1){
                 System.out.println("Please enter your name");
                 s.nextLine();
