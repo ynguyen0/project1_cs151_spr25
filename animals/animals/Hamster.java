@@ -186,7 +186,7 @@ public class Hamster extends Pet {
             canAdopt = false;
         }
         else{
-            System.out.println(name + "is not yet adoptable. Please come back another time.");
+            System.out.println(name + " is not yet adoptable. Please come back another time.");
         }       
     }
 
@@ -234,7 +234,7 @@ public class Hamster extends Pet {
 
     public void eat(){
         if(cheek.size() > 0){
-            System.out.println(name + "ate the " + cheek.remove() + "it was storing in its cheek");
+            System.out.println(name + " ate the " + cheek.remove() + "it was storing in its cheek");
         }
         else{
             System.out.println(name + " is eating a large mouthful of seeds.");
@@ -242,7 +242,7 @@ public class Hamster extends Pet {
     }
 
     public void runInMaze(){
-        System.out.println(name + "is now running in the maze!");
+        System.out.println(name + " is now running in the maze!");
         if(cheek.size() == 5 || cheek.size() == 4){
             System.out.println(name + " got tired and ate a " + cheek.remove()); 
         }
@@ -250,7 +250,7 @@ public class Hamster extends Pet {
 
 
     public void useWheel(){
-        System.out.println(name + "is now running in the wheel!");
+        System.out.println(name + " is now running in the wheel!");
         
         if(name.length() % 2 == 0){
             System.out.println("After five minutes, " + name + "is starting to get tired...");
@@ -268,7 +268,7 @@ public class Hamster extends Pet {
 
     public void storeFood(String snack){
         if(cheek.size() <= 5){
-            System.out.print(name + "is now storing ");
+            System.out.print(name + " is now storing ");
             for(String s: cheek){
                 System.out.print(s + ", ");
             }

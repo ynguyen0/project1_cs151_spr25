@@ -139,9 +139,6 @@ public class Staff implements Employee {
         catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         } 
-        finally {
-            s.close(); 
-        }
     }
 
     // increments the hours worked by an employee during a shift
