@@ -95,12 +95,12 @@ public class Vet implements Employee {
         System.out.println("How were the pet's vitals? (Please select: Critical/Normal/Healthy)");
         String vitals = s.nextLine();
 
-        if (vitals.equals("Critical")) {
+        if (vitals.equalsIgnoreCase("Critical")) {
             System.out.println("The pet's vitals have been logged as critical. Please transfer to the hospital.");
             pet.isHealthy = false;
-        } else if (vitals.equals("Normal")) {
+        } else if (vitals.equalsIgnoreCase("Normal")) {
             System.out.println("The pet's vitals have been logged as normal. Please continue to monitor.");
-        } else if (vitals.equals("Healthy")) {
+        } else if (vitals.equalsIgnoreCase("Healthy")) {
             System.out.println("The pet's vitals are healthy. Please give the pet a treat!");
             pet.isHealthy = true;
         } else {
