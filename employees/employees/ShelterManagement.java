@@ -401,11 +401,12 @@ public class ShelterManagement {
   }
 
   // Schedule playdate with an owner, pet, and date
-  public static void setPlaydateAppt(Scanner playdateScheduler) {
+  public static void setPlaydateAppt(Scanner playdateScheduler, String owner) {
 
     try {
-      String owner = playdateScheduler.nextLine();
+      // String owner = playdateScheduler.nextLine();
       System.out.println("Enter the pet's name: ");
+      playdateScheduler.nextLine();
       String pet = playdateScheduler.nextLine();
 
       if(!checkPetInSystem(pet)) {
@@ -424,6 +425,22 @@ public class ShelterManagement {
       System.out.println("Error: Invalid input.");
     }
 
+  }
+
+  public static Appointment getAppointment(String petName, String guestName){
+    Appointment app = new Appointment(petName, guestName);
+
+    for (Appointment a: playDates.keySet()){
+      if( a.pet.equalsIgnoreCase(petName) && a.owner.equalsIgnoreCase(guestName)){
+        return a;
+      }
+      else{
+        System.out.print("Appointment not found");
+        System.out.print(a.pet + a.owner);
+      }
+    }
+
+    return app;
   }
 
   // Used from Guest class; add's Guest's donation amount to donationBin

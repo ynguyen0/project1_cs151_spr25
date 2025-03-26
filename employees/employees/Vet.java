@@ -12,7 +12,7 @@ public class Vet implements Employee {
     private double weeklySalary;
     private String role;
     private double hoursWorked;
-     private Map<Pet, List<String>> prescriptions;
+    private Map<Pet, List<String>> prescriptions;
 
     public Vet (String employeeName, int employeeID, double weeklySalary, String role, double hoursWorked) {
             this.employeeName = employeeName;

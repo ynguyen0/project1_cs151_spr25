@@ -8,7 +8,7 @@ public class Hamster extends Pet {
 
     private Queue<String> cheek;
 
-    public Hamster(String name, String species, int roomNumber, boolean isHealthy, boolean isAdopted, int age){
+    public Hamster(String name, String species, int roomNumber, boolean isHealthy, boolean isAdopted, boolean canAdopt, int age){
         cheek = new LinkedList<>();
         cheek.add("a piece of tv cable?");
         cheek.add("sunflower seeds");
@@ -19,6 +19,7 @@ public class Hamster extends Pet {
         this.roomNumber = roomNumber;
         this.isHealthy = isHealthy;
         this.isAdopted = isAdopted; 
+        this.canAdopt = canAdopt;
         this.age = age;
     }
 
@@ -180,7 +181,7 @@ public class Hamster extends Pet {
 
     public void adopt(String guestname){
         if (canAdopt){
-            System.out.println("Dear " + guestname + ", Thank you for adopting" + name + "!");
+            System.out.println("Dear " + guestname + ", Thank you for adopting " + name + "!");
             System.out.println("Please take good care of them!");
             isAdopted = true;
             canAdopt = false;
@@ -234,7 +235,7 @@ public class Hamster extends Pet {
 
     public void eat(){
         if(cheek.size() > 0){
-            System.out.println(name + " ate the " + cheek.remove() + "it was storing in its cheek");
+            System.out.println(name + " ate the " + cheek.remove() + " it was storing in its cheek");
         }
         else{
             System.out.println(name + " is eating a large mouthful of seeds.");
@@ -253,7 +254,7 @@ public class Hamster extends Pet {
         System.out.println(name + " is now running in the wheel!");
         
         if(name.length() % 2 == 0){
-            System.out.println("After five minutes, " + name + "is starting to get tired...");
+            System.out.println("After five minutes, " + name + " is starting to get tired...");
             nap();
         }
         else{
@@ -273,7 +274,7 @@ public class Hamster extends Pet {
                 System.out.print(s + ", ");
             }
             cheek.add(snack);
-            System.out.println("and " + snack + "in its cheek.");
+            System.out.println("and " + snack + " in its cheek.");
         }
         else{
             System.out.println(name + " is already full!");

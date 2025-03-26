@@ -2,8 +2,8 @@ package employees;
 
 public class Appointment {
   
-  private String pet;
-  private String owner;
+  protected String pet;
+  protected String owner;
 
   public Appointment(String p, String o) {
     pet = p;
